@@ -1,2 +1,0 @@
-# jonathanrys.com
-Personal website
