@@ -18,3 +18,7 @@ password
 note
   pk *String  # userId
   sk **String # noteId
+
+@aws
+region us-east-1
+profile default
