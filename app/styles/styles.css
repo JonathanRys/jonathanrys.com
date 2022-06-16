@@ -1,0 +1,14 @@
+@charset 'utf-8';
+
+.hyperlink {
+  text-decoration: underline;
+  color: text-blue-600;
+}
+
+.hyperlink:hover {
+  color:azure text-blue-800;
+}
+
+.hyperlink:visited {
+  color: text-purple-600;
+}
