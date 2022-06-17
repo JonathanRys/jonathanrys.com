@@ -202,7 +202,7 @@ const Layout: FC<Props> = ({ children }) => {
   return (
     <>
       <Header />
-      <div className={`container mx-auto h-full z-0 py-16 ${ onHomePage ? 'px-0' : 'px-2 sm:px-0'}`}>
+      <div className={`container mx-auto h-full z-0 ${ onHomePage ? 'px-0 py-10 sm:py-20' : 'px-2 sm:px-0 py-16 sm:py-20'}`}>
         { children }
         <div className="h-16"></div> { /*Spacer for fixed footer*/ }
       </div>
