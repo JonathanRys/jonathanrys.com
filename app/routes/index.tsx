@@ -12,8 +12,8 @@ export default function Index() {
             <div className="absolute inset-0">
               <img
                 className="h-full w-full object-cover"
-                src="/_static/hiking/Boot Spur - 2017.jpg"
-                alt="Boot spur from &quote;the HoJo&quote; near Tuckerman&apos;s ravine"
+                src="/_static/cover_image.jpg"
+                alt={ "Boot spur from \"the HoJo\" near Tuckerman's ravine" }
               />
               <div className="absolute inset-0 bg-[color:rgba(156,156,156,0.5)] mix-blend-multiply" />
             </div>
