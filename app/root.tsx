@@ -9,6 +9,9 @@ import type {
   FC,
 } from "react";
 import {
+  useState,
+} from "react";
+import {
   Link,
   Links,
   LiveReload,
@@ -74,7 +77,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 // Document component 
 const Document: FC<PropsWithTitle> = ({ children, title = 'Jonathan Rys | Home' }) => {
   return (
-    <html lang="en" className="h-full min-h-screen">
+    <html lang="en" className="h-full min-h-screen font-sans text-zinc-600">
       <head>
         <Meta />
         <Links />
@@ -95,28 +98,52 @@ const Document: FC<PropsWithTitle> = ({ children, title = 'Jonathan Rys | Home' 
 const menuItems = [
   {
     to: '/schedule',
-    icon: '',
+    icon: 'icon-calendar',
     title: 'Schedule'
   }, {
     to: '/jobs',
-    icon: '',
+    icon: 'icon-briefcase',
     title: 'Work Experience'
   }, {
     to: '/about',
-    icon: '',
+    icon: 'icon-info',
     title: 'About'
   },
 ];
 
 const Header = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <nav className="flex align-center z-50 w-full fixed top-0 justify-between bg-zinc-300 text-base font-medium">
-      <Link to='/' className="font-bold p-2">Home</Link>
-      <ul className="flex">
+    <nav className="px-3 py-2 nav w-full bg-zinc-300 text-base sm:font-medium">
+      <Link to='/' className="font-bold p-2 home-icon-highlight">
+        <i className="icon-home"></i> Home
+      </Link>
+      <div 
+        className="relative overflow-visible right-0 flex icon-menu text-2xl sm:hidden" 
+        onClick={() => setMenuOpen(!menuOpen)}>
+        { menuOpen &&
+          <ul className="mobile-nav font-sans bg-zinc-200 border-zinc-400">
+            { menuItems.map( (item, index) => (
+              <Link key={`menu-item-${index}`} to={ item.to }>
+                <li className="mx-4 my-3 hover:bg-zinc-300 hover:text-black hover:font-bold text-shadow">
+                  <i className={ item.icon }></i> { item.title }
+                </li>
+              </Link>
+            )) }
+          </ul>
+        }
+      </div>
+      <ul className="desktop-nav hidden sm:flex">
         { menuItems.map( (item, index) => (
-          <li key={`menu-item-${index}`} className="mx-4 my-3">
-            <Link to={ item.to }>{ item.title }</Link>
-          </li>
+          <Link
+            key={`menu-item-${index}`}
+            to={ item.to }
+            className="mx-4 my-3 hover:text-black hover:font-bold text-shadow">
+            <li>
+              { item.title }
+            </li>
+          </Link>
         )) }
       </ul>
     </nav>
@@ -127,14 +154,17 @@ const footerLinks = [
   {
     id: 1,
     title: 'Contact',
+    icon: 'icon-mail4',
     href: 'mailto: jonathan.rk.rys@gmail.com'
   }, {
     id: 2,
     title: 'LinkedIn',
+    icon: 'icon-linkedin',
     href: 'https://www.linkedin.com/in/jonathan-rys-a937724b/'
   }, {
     id: 3,
     title: 'GitHub',
+    icon: 'icon-github',
     href: 'https://github.com/JonathanRys'
   },
 
@@ -145,10 +175,17 @@ const Footer: FC<FooterProps> = ({ hide }) => {
     <>
       {
         hide ? null :
-        <footer className="w-full py-3 z-50 bg-zinc-300 text-base font-medium fixed bottom-0">
+        <footer className="w-full py-3 z-40 bg-zinc-300 text-base font-medium fixed bottom-0">
           <ul className="w-full flex align-center justify-around">
             {
-              footerLinks.map(link => (<a key={`footer-link-${link.id}`} href={ link.href }>{ link.title }</a>))
+              footerLinks.map(link => (
+                <a 
+                  key={`footer-link-${link.id}`}
+                  className="hover:text-black hover:font-bold text-shadow"
+                  href={ link.href }>
+                  <i className={ link.icon }></i> { link.title }
+                </a>
+              ))
             }
           </ul>
         </footer>
@@ -160,15 +197,16 @@ const Footer: FC<FooterProps> = ({ hide }) => {
 // Layout wrapper to isolate the order and layout of major sctions
 const Layout: FC<Props> = ({ children }) => {
   const location = useLocation();
+  const onHomePage = location.pathname === '/';
 
   return (
     <>
       <Header />
-      <div className="container mx-auto h-full z-0 py-16">
+      <div className={`container mx-auto h-full z-0 py-16 ${ onHomePage ? 'px-0' : 'px-2 sm:px-0'}`}>
         { children }
         <div className="h-16"></div> { /*Spacer for fixed footer*/ }
       </div>
-      <Footer hide={ location.pathname === '/' } />
+      <Footer hide={ onHomePage } />
     </>
   );
 };
