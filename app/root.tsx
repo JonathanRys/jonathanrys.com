@@ -113,10 +113,12 @@ const menuItems = [
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
+  const onHomePage = location.pathname === '/';
 
   return (
     <nav className="px-3 py-2 nav w-full bg-zinc-300 text-base sm:font-medium">
-      <Link to='/' className="font-bold p-2 home-icon-highlight">
+      <Link to='/' className={`font-bold p-2 home-icon-highlight${onHomePage ? ' disabled': ''}`}>
         <i className="icon-home"></i> Home
       </Link>
       <div 
@@ -126,7 +128,7 @@ const Header = () => {
           <ul className="mobile-nav font-sans bg-zinc-200 border-zinc-400">
             { menuItems.map( (item, index) => (
               <Link key={`menu-item-${index}`} to={ item.to }>
-                <li className="mx-4 my-3 hover:bg-zinc-300 hover:text-black hover:font-bold text-shadow">
+                <li className={`mx-4 my-3 hover:bg-zinc-300${location.pathname === item.to ? ' disabled' : ' text-shadow'}`}>
                   <i className={ item.icon }></i> { item.title }
                 </li>
               </Link>
@@ -139,7 +141,8 @@ const Header = () => {
           <Link
             key={`menu-item-${index}`}
             to={ item.to }
-            className="mx-4 my-3 hover:text-black hover:font-bold text-shadow">
+            title={ item.title }
+            className={`mx-4 my-3 menu-item${location.pathname === item.to ? ' disabled' : ' text-shadow'}`}>
             <li>
               { item.title }
             </li>
