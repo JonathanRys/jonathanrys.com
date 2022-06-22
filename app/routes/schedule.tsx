@@ -1,46 +1,19 @@
-import { Outlet, useLoaderData } from '@remix-run/react';
+import { Outlet, Link, useLoaderData } from '@remix-run/react';
+import type { LoaderFunction } from "@remix-run/node";
 
-export const loader = () => {
-  const data = {
-    appointments: [
-      {
-        id: 1,
-        title: 'Meeting',
-        location: 'Cambridge, MA',
-        startDate: '2022-06-15T15:00:00.000Z',
-        endDate: '2022-06-15T18:00:00.000Z',
-        description: ''
-      },
-      {
-        id: 2,
-        title: 'Meeting',
-        location: 'Zoom',
-        startDate: '2022-12-15T12:00:00.000Z',
-        endDate: '2022-12-15T11:00:00.000Z',
-        description: ''
-      },
-      {
-        id: 3,
-        title: 'Meeting',
-        location: 'Boston, MA',
-        startDate: '2022-07-14T07:00:00.000Z',
-        endDate: '2022-07-14T08:30:00.000Z',
-        description: ''
-      },
-    ]
-  };
+import { getUser } from "~/session.server";
 
-  return data;
+import type { Appointment } from "~/models/appointment.server";
+import { getAppointmentListItems } from "~/models/appointment.server";
+
+export const loader: LoaderFunction = async ({ request }) => {
+  const user = await getUser(request);
+  if (!user) {
+    return [];
+  }
+
+  return await getAppointmentListItems({ userId: user.id });
 };
-
-interface Appointment {
-  id: number,
-  title: string,
-  location: string,
-  startDate: string,
-  endDate: string,
-  description: string
-}
 
 const Appointments = () => {    
     const { appointments } = useLoaderData();
@@ -48,15 +21,17 @@ const Appointments = () => {
     return (
       <>
         <h1 className="text-xl">Schedule</h1>
-        <p>Here is my schedule.  If you&apos;d like to set up some time to talk, please <a className="hyperlink" href="mailto: jonathan.rk.rys@gmail.com">reach out</a>.</p>
+        <p>Here is my schedule.  If you&apos;d like to set up some time to talk, 
+          <Link className="hyperlink" to="/schedule/create"> schedule a meeting </Link>
+          or feel free to <a className="hyperlink" href="mailto: jonathan.rk.rys@gmail.com">reach out via email</a>.</p>
         <ul>
           {
-            appointments.map( (appointment: Appointment) => {
+            appointments && appointments.map( (appointment: Appointment, index: number) => {
               const startTime = new Date(appointment.startDate).toLocaleString();
               const endTime = new Date(appointment.endDate).toLocaleString();
 
               return (
-                <li className="my-8 p-5 rounded-md bg-zinc-200" key={`job-${appointment.id}` }>
+                <li className={`${index ? 'my-8' : 'mb-8'} p-5 rounded-md bg-zinc-200`} key={`job-${appointment.id}` }>
                     <h4 className="py-1">
                       { appointment.location }
                     </h4>

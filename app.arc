@@ -19,6 +19,10 @@ note
   pk *String  # userId
   sk **String # noteId
 
+appointment
+  pk *String  # userId
+  sk **String # appointmentId
+
 @aws
 region us-east-1
 profile default

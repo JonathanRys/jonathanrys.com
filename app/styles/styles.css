@@ -1,16 +1,22 @@
 @charset 'utf-8';
 
+:root {
+  --text-zinc-600: #52525b;
+  --text-sky-800: #075985;
+  --text-sky-600: #0284c7;
+}
+
 .hyperlink {
-  text-decoration: underline;
-  color: text-blue-600;
+  font-weight: 500;
+  color: var(--text-sky-600);
 }
 
 .hyperlink:hover {
-  color:azure text-blue-800;
+  color: var(--text-sky-800);
 }
 
 .hyperlink:visited {
-  color: text-purple-600;
+  color: var(--text-purple-600);
 }
 
 .nav {
@@ -42,18 +48,6 @@
   justify-content: space-between;
 }
 
-/* text-shadow */
-.menu-item {
-  /* padding: 0 0.375rem; */
-  /* padding: 0 0.15rem; */
-}
-
-.menu-item:first-of-type,
-.menu-item:last-of-type {
-  /* padding: 0 0.125rem; */
-  /* padding: 0 0.05rem; */
-}
-
 .menu-item:after {
   display: block;
   content: attr(title);
@@ -81,13 +75,9 @@
   padding: 0;
 }
 
-:root {
-  --text-zinc-600: #52525B;
-}
-
 /* IcoMoon color overrides */
 .icon-mail4:before {
-  color: #DD4D40;
+  color: #dd4d40;
 }
 
 .icon-linkedin:before {
@@ -103,6 +93,12 @@
   pointer-events: none;
   color: #aaa;
   text-shadow: 1px 1px white;
+}
+
+/* Modal styles */
+
+.overlay {
+  background-color: rgb(0, 0, 0, 0.5);
 }
 
 /** IcoMoon generated font styles **/

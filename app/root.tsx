@@ -4,10 +4,8 @@ import type {
   MetaFunction,
 } from "@remix-run/node";
 import { json } from "@remix-run/node";
-import type {
-  ReactNode,
-  FC,
-} from "react";
+import type { FC } from "react";
+import type { WrapperProps } from '~/types/base';
 import {
   useState,
 } from "react";
@@ -42,10 +40,6 @@ export const meta: MetaFunction = () => ({
 });
 
 // Type declarations
-type Props = {
-  children: ReactNode
-};
-
 type Error = {
   message: string
 }
@@ -55,7 +49,7 @@ type State = {
   error?: Error
 }
 
-interface PropsWithTitle extends Props {
+interface PropsWithTitle extends WrapperProps {
   title?: string
 };
 
@@ -198,7 +192,7 @@ const Footer: FC<FooterProps> = ({ hide }) => {
 }
 
 // Layout wrapper to isolate the order and layout of major sctions
-const Layout: FC<Props> = ({ children }) => {
+const Layout: FC<WrapperProps> = ({ children }) => {
   const location = useLocation();
   const onHomePage = location.pathname === '/';
 
