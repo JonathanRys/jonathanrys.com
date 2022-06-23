@@ -33,7 +33,7 @@ export default function Index() {
                     to="/appointment/create"
                     className="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-medium text-zinc-900 shadow-sm hover:bg-zinc-200 sm:px-8"
                   >
-                    Schedule a call
+                    Schedule an Apppointment
                   </Link>
                 ) : (
                   <div className="space-y-4 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5 sm:space-y-0">

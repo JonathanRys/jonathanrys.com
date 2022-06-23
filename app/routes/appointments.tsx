@@ -31,7 +31,7 @@ const Appointments = () => {
         <Notification message={message} setMessage={setMessage}/>
         <h1 className="text-xl">Upcoming appointments</h1>
         <p className="mt-5">If you&apos;d like to set up some time to talk, 
-          <Link className="hyperlink" to="/appointment/create?redirectTo=/appointments"> shedule an appointment </Link>
+          <Link className="hyperlink" to="/appointment/create?redirectTo=/appointments"> schedule an appointment </Link>
           or feel free to <a className="hyperlink" href="mailto: jonathan.rk.rys@gmail.com" onClick={ copyHandler }>
             reach out via email
           </a>.

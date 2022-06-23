@@ -96,7 +96,7 @@ const menuItems = [
   {
     to: '/appointments',
     icon: 'icon-calendar',
-    title: 'Schedule'
+    title: 'Appointments'
   }, {
     to: '/jobs',
     icon: 'icon-briefcase',
@@ -149,9 +149,7 @@ const Header = () => {
             to={ item.to }
             title={ item.title }
             className={`mx-4 my-3 menu-item${location.pathname === item.to ? ' disabled' : ' text-shadow'}`}>
-            <li>
-              { item.title }
-            </li>
+            { item.title }
           </Link>
         )) }
         { user ?
