@@ -1,5 +1,6 @@
 import { Outlet, Link, useLoaderData } from '@remix-run/react';
-import type { LoaderFunction } from "@remix-run/node";
+import type { LoaderFunction, MetaFunction } from "@remix-run/node";
+
 import { useState } from 'react';
 
 import { getUser } from "~/session.server";
@@ -15,6 +16,12 @@ export const loader: LoaderFunction = async ({ request }) => {
   }
 
   return await getAppointmentListItems({ userId: user.id });
+};
+
+export const meta: MetaFunction = () => {
+  return {
+    title: "Upcoming Appointments",
+  };
 };
 
 const Appointments = () => {    

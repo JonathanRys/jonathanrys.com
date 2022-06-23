@@ -1,3 +1,4 @@
+import type { MetaFunction } from '@remix-run/node'
 import { Link, Outlet, useLoaderData } from '@remix-run/react';
 
 export const loader = () => {
@@ -45,6 +46,12 @@ interface Job {
   endDate: string,
   description: string
 }
+
+export const meta: MetaFunction = () => {
+  return {
+    title: "Work Experience",
+  };
+};
 
 const Jobs = () => {    
     const { jobs } = useLoaderData();

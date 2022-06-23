@@ -1,7 +1,14 @@
+import type { MetaFunction } from "@remix-run/node";
 import Modal from '~/modal/modal';
 import ModalFooter from '~/modal/modalFooter';
 import Form from '~/util/form';
 import { useOptionalUser } from "~/utils";
+
+export const meta: MetaFunction = () => {
+  return {
+    title: "Schedule an Appointment",
+  };
+};
 
 const CreateAppointmentModal = () => {
   const user = useOptionalUser();

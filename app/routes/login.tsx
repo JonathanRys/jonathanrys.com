@@ -3,6 +3,7 @@ import type {
   LoaderFunction,
   MetaFunction,
 } from "@remix-run/node";
+import type { FC } from "react";
 import { json, redirect } from "@remix-run/node";
 import { Form, Link, useActionData, useSearchParams } from "@remix-run/react";
 import * as React from "react";
@@ -74,6 +75,23 @@ export const meta: MetaFunction = () => {
     title: "Login",
   };
 };
+
+type State = {
+  hasError: boolean,
+  error?: Error
+}
+
+// Error Boundry function
+export const ErrorBoundry: FC<State> = ({ error }) => {
+  return (
+    <div className="flex min-h-full flex-col justify-center">
+      <div className="mx-auto w-full max-w-md px-8">
+        <h1 className="text-xl font-medium leading-normal text-zinc-800">Error:</h1>
+        <p>{ error && error.message }</p>
+      </div>
+    </div>
+  )
+}
 
 export default function LoginPage() {
   const [searchParams] = useSearchParams();
