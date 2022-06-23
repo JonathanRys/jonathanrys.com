@@ -5,6 +5,7 @@ import { useOptionalUser } from "~/utils";
 
 const DeleteAppointmentModal = () => {
   const user = useOptionalUser();
+  console.log('user:', user)
 
   return (
     <Modal>

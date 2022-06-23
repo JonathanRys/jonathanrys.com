@@ -5,6 +5,7 @@ import { useOptionalUser } from "~/utils";
 
 const EditAppointmentModal = () => {
   const user = useOptionalUser();
+  console.log('user:', user)
 
   return (
     <Modal>

@@ -1,12 +1,13 @@
 import type { ActionFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
 
-import { getSession } from "~/session.server";
+// import { getSession } from "~/session.server";
 
 import { useOptionalUser } from "~/utils";
 
 export const action: ActionFunction = async ({ request }) => {
-  const session = await getSession(request);
+  // const session = await getSession(request);
+
 };
 
 export default function Index() {
