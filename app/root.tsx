@@ -1,15 +1,14 @@
 import type {
   LinksFunction,
   LoaderFunction,
-  MetaFunction,
+  MetaFunction
 } from "@remix-run/node";
-import { json } from "@remix-run/node";
 import type { FC } from "react";
 import type { WrapperProps } from '~/types/base';
+import { json } from "@remix-run/node";
+import { useState } from "react";
 import {
-  useState,
-} from "react";
-import {
+  Form,
   Link,
   Links,
   LiveReload,
@@ -17,12 +16,16 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLocation
+  useLocation,
+  useLoaderData,  
 } from "@remix-run/react";
 
 import tailwindStylesheetUrl from "./styles/tailwind.css";
 import customStylesheetUrl from "./styles/styles.css";
+
 import { getUser } from "./session.server";
+
+import Notification from '~/util/notification'
 
 // HTML <head> section components
 export const links: LinksFunction = () => {
@@ -64,7 +67,7 @@ type LoaderData = {
 // Loader
 export const loader: LoaderFunction = async ({ request }) => {
   return json<LoaderData>({
-    user: await getUser(request),
+    user: await getUser(request)
   });
 };
 
@@ -81,7 +84,7 @@ const Document: FC<PropsWithTitle> = ({ children, title = 'Jonathan Rys | Home' 
         { children }
         {
           process.env.NODE_ENV === 'development' ?
-          <LiveReload /> : null
+          <LiveReload port={8002} /> : null
         }
       </body>
     </html>
@@ -91,7 +94,7 @@ const Document: FC<PropsWithTitle> = ({ children, title = 'Jonathan Rys | Home' 
 // Header component for logo and navigation
 const menuItems = [
   {
-    to: '/schedule',
+    to: '/appointments',
     icon: 'icon-calendar',
     title: 'Schedule'
   }, {
@@ -109,7 +112,8 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const onHomePage = location.pathname === '/';
-
+  const { user } = useLoaderData()
+  
   return (
     <nav className="px-3 py-2 nav w-full bg-zinc-300 text-base sm:font-medium">
       <Link to='/' className={`font-bold p-2 home-icon-highlight${onHomePage ? ' disabled': ''}`}>
@@ -127,6 +131,14 @@ const Header = () => {
                 </li>
               </Link>
             )) }
+            { user ?
+              <Form action="/logout" method="post">
+                <button type="submit" title="Logout" className="mx-4 my-3 hover:bg-zinc-300 text-shadow">
+                  <i className="icon-exit"></i> Logout
+                </button>
+              </Form>: 
+              null
+            }
           </ul>
         }
       </div>
@@ -142,41 +154,61 @@ const Header = () => {
             </li>
           </Link>
         )) }
+        { user ?
+          <Form action="/logout" method="post">
+            <button
+              type="submit"
+              title="Logout"
+              className="mx-4 my-3 menu-item text-shadow">
+                Logout
+            </button>
+          </Form> :
+          null
+        }
       </ul>
     </nav>
   )
 }
 
-const footerLinks = [
-  {
-    id: 1,
-    title: 'Contact',
-    icon: 'icon-mail4',
-    href: 'mailto: jonathan.rk.rys@gmail.com'
-  }, {
-    id: 2,
-    title: 'LinkedIn',
-    icon: 'icon-linkedin',
-    href: 'https://www.linkedin.com/in/jonathan-rys-a937724b/'
-  }, {
-    id: 3,
-    title: 'GitHub',
-    icon: 'icon-github',
-    href: 'https://github.com/JonathanRys'
-  },
-
-];
-
 const Footer: FC<FooterProps> = ({ hide }) => {
+  const [message, setMessage] = useState('');
+
+  const copyHandler = () => {
+    navigator.clipboard.writeText('jonathan.rk.rys@gmail.com')
+    setMessage('Email copied to clipboard');
+  }
+
+  const footerLinks = [
+    {
+      id: 1,
+      title: 'Contact',
+      icon: 'icon-mail4',
+      href: 'mailto: jonathan.rk.rys@gmail.com',
+      onClick: copyHandler
+    }, {
+      id: 2,
+      title: 'LinkedIn',
+      icon: 'icon-linkedin',
+      href: 'https://www.linkedin.com/in/jonathan-rys-a937724b/'
+    }, {
+      id: 3,
+      title: 'GitHub',
+      icon: 'icon-github',
+      href: 'https://github.com/JonathanRys'
+    },
+  ];
+
   return (
     <>
       {
         hide ? null :
         <footer className="w-full py-3 z-40 bg-zinc-300 text-base font-medium fixed bottom-0">
+          <Notification message={ message } setMessage={ setMessage }/>
           <ul className="w-full flex align-center justify-around">
             {
               footerLinks.map(link => (
                 <a 
+                  onClick={ link.onClick || undefined }
                   key={`footer-link-${link.id}`}
                   className="hover:text-black hover:font-bold text-shadow"
                   href={ link.href }>

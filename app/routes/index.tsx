@@ -1,9 +1,17 @@
+import type { ActionFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
+
+import { getSession } from "~/session.server";
 
 import { useOptionalUser } from "~/utils";
 
+export const action: ActionFunction = async ({ request }) => {
+  const session = await getSession(request);
+};
+
 export default function Index() {
   const user = useOptionalUser();
+
   return (
     <main className="relative bg-white sm:flex sm:items-center sm:justify-center">
       <div className="relative sm:pb-16 sm:pt-8">
@@ -18,14 +26,13 @@ export default function Index() {
               <div className="absolute inset-0 bg-[color:rgba(156,156,156,0.5)] mix-blend-multiply" />
             </div>
             <div className="lg:pb-18 relative px-4 pt-16 pb-8 sm:px-6 sm:pt-24 sm:pb-14 lg:px-8 lg:pt-32">
-
               <div className="mx-auto mt-10 max-w-sm sm:flex sm:max-w-none sm:justify-center">
                 {user ? (
                   <Link
-                    to="/notes"
+                    to="/appointment/create"
                     className="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-medium text-zinc-900 shadow-sm hover:bg-zinc-200 sm:px-8"
                   >
-                    View Notes for {user.email}
+                    Schedule a call
                   </Link>
                 ) : (
                   <div className="space-y-4 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5 sm:space-y-0">
@@ -44,7 +51,6 @@ export default function Index() {
                   </div>
                 )}
               </div>
-
             </div>
           </div>
         </div>
@@ -87,12 +93,6 @@ export default function Index() {
                 alt: "MSW",
                 href: "https://mswjs.io",
               },
-              {
-                src: "/_static/logos/graphql.png",
-                alt: "Graph QL",
-                href: "https://graphql.org/",
-              },
-              
               {
                 src: "https://user-images.githubusercontent.com/1500684/157772447-00fccdce-9d12-46a3-8bb4-fac612cdc949.svg",
                 alt: "Vitest",

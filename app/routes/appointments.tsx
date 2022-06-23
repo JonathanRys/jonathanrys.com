@@ -1,10 +1,12 @@
 import { Outlet, Link, useLoaderData } from '@remix-run/react';
 import type { LoaderFunction } from "@remix-run/node";
+import { useState } from 'react';
 
 import { getUser } from "~/session.server";
-
 import type { Appointment } from "~/models/appointment.server";
 import { getAppointmentListItems } from "~/models/appointment.server";
+
+import Notification from '~/util/notification'
 
 export const loader: LoaderFunction = async ({ request }) => {
   const user = await getUser(request);
@@ -17,19 +19,28 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 const Appointments = () => {    
     const { appointments } = useLoaderData();
+    const [message, setMessage] = useState('');
+
+    const copyHandler = () => {
+      navigator.clipboard.writeText('jonathan.rk.rys@gmail.com')
+      setMessage('Email copied to clipboard');
+    }
 
     return (
       <>
-        <h1 className="text-xl">Schedule</h1>
-        <p>Here is my schedule.  If you&apos;d like to set up some time to talk, 
-          <Link className="hyperlink" to="/schedule/create"> schedule a meeting </Link>
-          or feel free to <a className="hyperlink" href="mailto: jonathan.rk.rys@gmail.com">reach out via email</a>.</p>
+        <Notification message={message} setMessage={setMessage}/>
+        <h1 className="text-xl">Upcoming appointments</h1>
+        <p className="mt-5">If you&apos;d like to set up some time to talk, 
+          <Link className="hyperlink" to="/appointment/create?redirectTo=/appointments"> shedule an appointment </Link>
+          or feel free to <a className="hyperlink" href="mailto: jonathan.rk.rys@gmail.com" onClick={ copyHandler }>
+            reach out via email
+          </a>.
+        </p>
         <ul>
           {
             appointments && appointments.map( (appointment: Appointment, index: number) => {
               const startTime = new Date(appointment.startDate).toLocaleString();
               const endTime = new Date(appointment.endDate).toLocaleString();
-
               return (
                 <li className={`${index ? 'my-8' : 'mb-8'} p-5 rounded-md bg-zinc-200`} key={`job-${appointment.id}` }>
                     <h4 className="py-1">

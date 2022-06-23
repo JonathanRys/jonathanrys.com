@@ -92,6 +92,32 @@ export async function createAppointment({
   };
 }
 
+export async function updateAppointment({
+  userId,
+  title,
+  description,
+  location,
+  startDate,
+  endDate
+}: Pick<Appointment, "description" | "title" | "userId" | "location" | "startDate" | "endDate">): Promise<Appointment> {
+  const db = await arc.tables();
+
+  const result = await db.appointment.update({
+    pk: userId,
+    sk: idToSk(cuid()),
+    ...arguments // @TODO:security
+  });
+  return {
+    id: skToId(result.sk),
+    userId: result.pk,
+    title: result.title,
+    description: result.description,
+    location: result.location,
+    startDate: result.startDate,
+    endDate: result.endDate,
+  };
+}
+
 export async function deleteAppointment({ id, userId }: Pick<Appointment, "id" | "userId">) {
   const db = await arc.tables();
   return db.appointment.delete({ pk: userId, sk: idToSk(id) });

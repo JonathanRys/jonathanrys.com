@@ -1,4 +1,4 @@
-import { useMatches } from "@remix-run/react";
+import { useMatches, useLocation } from "@remix-run/react";
 import { useMemo } from "react";
 
 import type { User } from "~/models/user.server";
@@ -68,4 +68,10 @@ export function useUser(): User {
 
 export function validateEmail(email: unknown): email is string {
   return typeof email === "string" && email.length > 3 && email.includes("@");
+}
+
+export function useQueryString() {
+  const { search } = useLocation();
+
+  return useMemo(() => new URLSearchParams(search), [search]);
 }

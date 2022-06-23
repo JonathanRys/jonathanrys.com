@@ -59,6 +59,21 @@
   visibility: hidden;
 }
 
+.notification {
+  background-color: var(--text-sky-800);
+  color: white;
+  position: fixed;
+  top: 4rem;
+  left: 0;
+  padding: 10px;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  border-bottom-left-radius: 0.375rem;
+  border-bottom-right-radius: 0.375rem;
+  z-index: 50;
+}
+
 .text-shadow:hover {
   text-shadow: 1px 1px white;
   font-weight: 700;
