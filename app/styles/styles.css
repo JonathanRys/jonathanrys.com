@@ -119,11 +119,11 @@
 /** IcoMoon generated font styles **/
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?lasjjy');
-  src:  url('/_static/fonts/icomoon.eot?lasjjy#iefix') format('embedded-opentype'),
-    url('/_static/fonts/icomoon.ttf?lasjjy') format('truetype'),
-    url('/_static/fonts/icomoon.woff?lasjjy') format('woff'),
-    url('/_static/fonts/icomoon.svg?lasjjy#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?jpq3xm');
+  src:  url('/_static/fonts/icomoon.eot?jpq3xm#iefix') format('embedded-opentype'),
+    url('/_static/fonts/icomoon.ttf?jpq3xm') format('truetype'),
+    url('/_static/fonts/icomoon.woff?jpq3xm') format('woff'),
+    url('/_static/fonts/icomoon.svg?jpq3xm#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -132,7 +132,7 @@
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
-  speak: never;
+  /* speak: never; */
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -245,4 +245,10 @@
 }
 .icon-briefcase:before {
   content: "\e9ae";
+}
+.icon-enter:before {
+  content: "\ea13";
+}
+.icon-exit:before {
+  content: "\ea14";
 }
