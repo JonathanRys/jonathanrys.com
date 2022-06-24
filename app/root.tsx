@@ -94,7 +94,7 @@ const Document: FC<PropsWithTitle> = ({ children, title = 'Jonathan Rys | Home' 
 // Header component for logo and navigation
 const menuItems = [
   {
-    to: '/appointments',
+    to: '/appointment',
     icon: 'icon-calendar',
     title: 'Appointments'
   }, {

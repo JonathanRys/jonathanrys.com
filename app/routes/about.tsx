@@ -1,3 +1,5 @@
+import type { MetaFunction } from '@remix-run/node'
+
 const data = [
   {
     id: 1,
@@ -9,6 +11,12 @@ const data = [
     text: 'Skateboarding, Hiking, Cooking, Foraging, Mycology'
   }
 ];
+
+export const meta: MetaFunction = () => {
+  return {
+    title: "About Jonathan",
+  };
+};
 
 const About = () => {
   return (
