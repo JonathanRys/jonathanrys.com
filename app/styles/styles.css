@@ -90,19 +90,6 @@
   padding: 0;
 }
 
-/* IcoMoon color overrides */
-.icon-mail4:before {
-  color: #dd4d40;
-}
-
-.icon-linkedin:before {
-  color: #0a66c2;
-}
-
-.icon-home:before {
-  color: #000080;
-}
-
 .disabled,
 .disabled .icon-home:before {
   pointer-events: none;
@@ -116,9 +103,23 @@
   background-color: rgb(0, 0, 0, 0.5);
 }
 
+/* IcoMoon color overrides */
+.icon-mail4:before {
+  color: #dd4d40;
+}
+
+.icon-linkedin:before {
+  color: #0a66c2;
+}
+
+.icon-home:before {
+  color: #000080;
+}
+
 /** IcoMoon generated font styles **/
 @font-face {
   font-family: 'icomoon';
+  /** Update hashes when new fonts are generated **/
   src:  url('fonts/icomoon.eot?jpq3xm');
   src:  url('/_static/fonts/icomoon.eot?jpq3xm#iefix') format('embedded-opentype'),
     url('/_static/fonts/icomoon.ttf?jpq3xm') format('truetype'),
@@ -144,6 +145,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/** Replace below this line **/
 .icon-home:before {
   content: "\e900";
 }

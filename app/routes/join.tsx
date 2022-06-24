@@ -30,7 +30,6 @@ export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
   const email = formData.get("email");
   const password = formData.get("password");
-  console.log('email:', email,)
   const redirectTo = safeRedirect(formData.get("redirectTo"), "/");
 
   if (!validateEmail(email)) {
@@ -63,7 +62,6 @@ export const action: ActionFunction = async ({ request }) => {
   }
 
   const user = await createUser(email, password);
-  console.log('user:', user)
 
   return createUserSession({
     request,
@@ -90,7 +88,7 @@ export const ErrorBoundry: FC<State> = ({ error }) => {
     <div className="flex min-h-full flex-col justify-center">
       <div className="mx-auto w-full max-w-md px-8">
         <h1 className="text-xl font-medium leading-normal text-zinc-800">Error:</h1>
-        <p>{ error && error.message }</p>
+        <pre>{ error?.message }</pre>
       </div>
     </div>
   )
@@ -172,7 +170,7 @@ export default function Join() {
           <input type="hidden" name="redirectTo" value={redirectTo} />
           <button
             type="submit"
-            className="w-full rounded bg-blue-500  py-2 px-4 text-white hover:bg-blue-600 focus:bg-blue-400"
+            className="w-full rounded bg-sky-500  py-2 px-4 text-white hover:bg-sky-600 focus:bg-sky-400"
           >
             Create Account
           </button>
@@ -180,7 +178,7 @@ export default function Join() {
             <div className="text-center text-sm text-gray-500">
               Already have an account?{" "}
               <Link
-                className="text-blue-500 underline"
+                className="text-sky-500 underline"
                 to={{
                   pathname: "/login",
                   search: searchParams.toString(),

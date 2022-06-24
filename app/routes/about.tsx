@@ -1,17 +1,5 @@
 import type { MetaFunction } from '@remix-run/node'
 
-const data = [
-  {
-    id: 1,
-    title: 'Interests',
-    text: 'I enjoy science of all kinds.  I\'m vegan.'
-  }, {
-    id: 2,
-    title: 'Hobbies',
-    text: 'Skateboarding, Hiking, Cooking, Foraging, Mycology'
-  }
-];
-
 export const meta: MetaFunction = () => {
   return {
     title: "About Jonathan",
@@ -19,6 +7,18 @@ export const meta: MetaFunction = () => {
 };
 
 const About = () => {
+  const data = [
+    {
+      id: 1,
+      title: 'Interests',
+      text: 'I enjoy science of all kinds.  I\'m vegan.'
+    }, {
+      id: 2,
+      title: 'Hobbies',
+      text: 'Skateboarding, Hiking, Cooking, Foraging, Mycology'
+    }
+  ];
+
   return (
     <>
       <h1 className="text-xl mb-2">About Me</h1>
