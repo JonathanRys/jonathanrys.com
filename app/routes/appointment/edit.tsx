@@ -11,7 +11,7 @@ const EditAppointmentModal = () => {
     <Modal>
       <Form action="/appointment/edit">
         <div className="px-5 py-8">
-          <h1 className="text-xl font-medium leading-normal text-zinc-800 pb-2 mb-5 border-b-2">Create Appointment</h1>
+          <h1 className="text-xl font-medium leading-normal text-zinc-800 pb-2 mb-5 border-b-2">Edit Appointment</h1>
           <div className="flex flex-col pb-2">
             <label htmlFor="title">Title</label>
             <input name="title" type="text" className="border-2 rounded px-2 py-1" value={ 'test' } />

@@ -5,3 +5,8 @@ import type {
 export type WrapperProps = {
   children: ReactNode
 };
+
+export type User = {
+  id: string,
+  email: string
+}
