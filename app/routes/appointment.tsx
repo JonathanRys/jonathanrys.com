@@ -45,7 +45,8 @@ const Appointments = () => {
         </p>
         <ul>
           {
-            appointments?.map( (appointment: Appointment, index: number) => {
+            appointments ? 
+            appointments.map( (appointment: Appointment, index: number) => {
               const startTime = new Date(appointment.startDate).toLocaleString();
               const endTime = new Date(appointment.endDate).toLocaleString();
               return (
@@ -60,7 +61,11 @@ const Appointments = () => {
                     </div>
                 </li>
               );
-            })
+            }) :
+            <>
+              <li className='my-4 mx-1'>You have no upcoming appointments.</li>
+              <li className='my-4 mx-1 text-sm'>Scheduling an appointment will send a confirmation email and an email alert one day before the event to both parties.</li>
+            </>
           }            
         </ul>
         <Outlet />

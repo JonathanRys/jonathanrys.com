@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import type { FC, MouseEvent } from "react";
 import type { User } from '~/types/base'
 import { useState } from "react";
 import {
@@ -31,6 +31,17 @@ const Header:FC<HeaderProps> = ({ user, pathname }) => {
     },
   ];
 
+  // Take care of eveything here rather than deferring to higher processes to avoid complication
+  const clickHandler = (e: MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setMenuOpen(false);
+    // @ts-ignore-start
+    // I would create a custom type except I feel that form? belongs on MouseEvent.target
+    e.target.form?.submit()
+    // @ts-ignore end
+  }
+
   return (
     <nav className="px-3 py-2 nav w-full bg-zinc-300 text-base sm:font-medium">
       <Link to='/' className={`font-bold p-2 home-icon-highlight${onHomePage ? ' disabled': ''}`}>
@@ -40,7 +51,7 @@ const Header:FC<HeaderProps> = ({ user, pathname }) => {
         className="relative overflow-visible right-0 flex icon-menu text-2xl sm:hidden" 
         onClick={() => setMenuOpen(!menuOpen)}>
         { menuOpen &&
-          <ul className="mobile-nav font-sans bg-zinc-200 border-zinc-400">
+          <ul onClick={ clickHandler } className="mobile-nav font-sans bg-zinc-200 border-zinc-400">
             { menuItems.map( (item, index) => (
               <Link key={`menu-item-${index}`} to={ item.to }>
                 <li className={`mx-4 my-3 hover:bg-zinc-300${pathname === item.to ? ' disabled' : ' text-shadow'}`}>
@@ -48,7 +59,8 @@ const Header:FC<HeaderProps> = ({ user, pathname }) => {
                 </li>
               </Link>
             )) }
-            { user ?
+            {
+              user ?
               <Form action="/logout" method="post">
                 <button type="submit" title="Logout" className="mx-4 my-3 hover:bg-zinc-300 text-shadow">
                   <i className="icon-exit"></i> Logout
@@ -69,13 +81,14 @@ const Header:FC<HeaderProps> = ({ user, pathname }) => {
             { item.title }
           </Link>
         )) }
-        { user ?
+        {
+          user ?
           <Form action="/logout" method="post">
             <button
               type="submit"
               title="Logout"
               className="mx-4 my-3 menu-item text-shadow">
-                Logout
+              Logout
             </button>
           </Form> :
           null
