@@ -120,11 +120,11 @@
 @font-face {
   font-family: 'icomoon';
   /** Update hashes when new fonts are generated **/
-  src:  url('fonts/icomoon.eot?jpq3xm');
-  src:  url('/_static/fonts/icomoon.eot?jpq3xm#iefix') format('embedded-opentype'),
-    url('/_static/fonts/icomoon.ttf?jpq3xm') format('truetype'),
-    url('/_static/fonts/icomoon.woff?jpq3xm') format('woff'),
-    url('/_static/fonts/icomoon.svg?jpq3xm#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?mkfxw5');
+  src:  url('/_static/fonts/icomoon.eot?mkfxw5#iefix') format('embedded-opentype'),
+    url('/_static/fonts/icomoon.ttf?mkfxw5') format('truetype'),
+    url('/_static/fonts/icomoon.woff?mkfxw5') format('woff'),
+    url('/_static/fonts/icomoon.svg?mkfxw5#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -146,6 +146,7 @@
 }
 
 /** Replace below this line **/
+
 .icon-home:before {
   content: "\e900";
 }
@@ -244,6 +245,12 @@
 }
 .icon-linkedin:before {
   content: "\e920";
+}
+.icon-video-camera:before {
+  content: "\e921";
+}
+.icon-phone:before {
+  content: "\e942";
 }
 .icon-briefcase:before {
   content: "\e9ae";

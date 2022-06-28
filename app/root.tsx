@@ -19,6 +19,7 @@ import {
 
 import tailwindStylesheetUrl from "./styles/tailwind.css";
 import customStylesheetUrl from "./styles/styles.css";
+import datepickerStylesheetUrl from "react-datepicker/dist/react-datepicker.css";
 
 import { getUser } from "./session.server";
 
@@ -30,6 +31,7 @@ export const links: LinksFunction = () => {
   return [
     { rel: "stylesheet", href: tailwindStylesheetUrl },
     { rel: "stylesheet", href: customStylesheetUrl },
+    { rel: "stylesheet", href: datepickerStylesheetUrl },
     // NOTE: Architect deploys the public directory to /_static/
     { rel: "icon", href: "/_static/favicon.ico" },
   ];

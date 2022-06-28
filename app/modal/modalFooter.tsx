@@ -2,7 +2,7 @@ import { Link } from "@remix-run/react";
 import { useQueryString } from '~/utils';
 
 type ButtonProps = {
-  onClick: () => void
+  onClick?: () => void
   value?: String
   className?: String
   submit?: boolean

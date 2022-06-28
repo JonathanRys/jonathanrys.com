@@ -15,7 +15,7 @@ const About = () => {
     }, {
       id: 2,
       title: 'Hobbies',
-      text: 'Skateboarding, Hiking, Cooking, Foraging, Mycology'
+      text: 'Hiking, Cooking, Foraging, Mycology, Skateboarding'
     }
   ];
 
@@ -27,7 +27,7 @@ const About = () => {
           data.map((item) => (
             <li key={ `about-${item.id}` }>
               <div className="my-2">
-                <h4 className="font-bold">{ item.title }</h4>
+                <h3 className="font-bold">{ item.title }</h3>
                 <p>{ item.text }</p>
               </div>
             </li>

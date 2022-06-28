@@ -9,8 +9,8 @@ export type Appointment = {
   title: string;
   description: string;
   location: string;
-  startDate: Date;
-  endDate: Date;
+  startDate: string;
+  endDate: string;
 };
 
 type AppointmentItem = {
@@ -58,6 +58,7 @@ export async function getAppointmentListItems({
     location: n.location,
     startDate: n.startDate,
     endDate: n.endDate,
+    description: n.description,
     id: skToId(n.sk),
   }));
 }
@@ -120,5 +121,6 @@ export async function updateAppointment({
 
 export async function deleteAppointment({ id, userId }: Pick<Appointment, "id" | "userId">) {
   const db = await arc.tables();
+  console.log('deleting', id)
   return db.appointment.delete({ pk: userId, sk: idToSk(id) });
 }
