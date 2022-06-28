@@ -13,7 +13,7 @@ export type Appointment = {
   endDate: string;
 };
 
-type AppointmentItem = {
+export type AppointmentItem = {
   pk: User["id"];
   sk: `appointment#${Appointment["id"]}`;
 };
