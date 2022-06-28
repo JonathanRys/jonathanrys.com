@@ -12,14 +12,11 @@ import Notification from '~/util/notification'
 
 export const loader: LoaderFunction = async ({ request }) => {
   const user = await getUser(request);
-  console.log('Loader user:', user)
   if (!user) {
     return [];
   }
 
   const appointments = await getAppointmentListItems({ userId: user.id });
-
-  console.log('Loader appointments:', appointments)
 
   return appointments;
 };
@@ -48,9 +45,6 @@ const Appointments = () => {
   const user = useOptionalUser();
   const appointments = useLoaderData();
   const [message, setMessage] = useState('');
-
-  console.log('user:', user)
-  console.log('appointments:', appointments)
 
   const copyHandler = () => {
     navigator.clipboard.writeText('jonathan.rk.rys@gmail.com')
