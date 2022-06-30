@@ -1,4 +1,4 @@
-import type { LoaderFunction, ActionFunction } from "@remix-run/node";
+import type { MetaFunction, LoaderFunction, ActionFunction } from "@remix-run/node";
 import { Form, useLoaderData } from '@remix-run/react';
 import Modal from '~/modal/modal';
 import ModalFooter from '~/modal/modalFooter';
@@ -8,6 +8,12 @@ import invariant from "tiny-invariant";
 import type { Appointment, AppointmentItem } from "~/models/appointment.server";
 import { json, redirect } from "@remix-run/node";
 import { requireUserId } from "~/session.server";
+
+export const meta: MetaFunction = () => {
+  return {
+    title: "Delete an Appointment",
+  };
+};
 
 type LoaderData = {
   appointment: Appointment;

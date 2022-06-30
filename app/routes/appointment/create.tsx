@@ -8,6 +8,7 @@ import { useOptionalUser } from "~/utils";
 import { requireUserId } from "~/session.server";
 import DatePicker from "react-datepicker";
 import { createAppointment } from '~/models/appointment.server'
+
 export const meta: MetaFunction = () => {
   return {
     title: "Schedule an Appointment",
@@ -70,27 +71,16 @@ export const action: ActionFunction = async ({ request }) => {
     );
   }
 
-  console.log('creating:', {
-    userId,
-    title,
-    location,
-    startDate: startDate,
-    endDate: endDate,
-    description
-  })
-
-  const appointment = await createAppointment({
-    userId,
-    title,
-    location,
-    startDate: startDate,
-    endDate: endDate,
-    description
-  })
-
-  console.log('appointment:', appointment)
-
   // update database
+  await createAppointment({
+    userId,
+    title,
+    location,
+    startDate: startDate,
+    endDate: endDate,
+    description
+  });
+
   return redirect(`/appointment`);
 
 }
