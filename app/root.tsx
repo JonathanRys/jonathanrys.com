@@ -29,9 +29,9 @@ import Header from "./nav/header";
 // HTML <head> section components
 export const links: LinksFunction = () => {
   return [
-    { rel: "stylesheet", href: tailwindStylesheetUrl },
-    { rel: "stylesheet", href: customStylesheetUrl },
-    { rel: "stylesheet", href: datepickerStylesheetUrl },
+    { rel: "stylesheet", type: "text/css", href: tailwindStylesheetUrl },
+    { rel: "stylesheet", type: "text/css", href: customStylesheetUrl },
+    { rel: "stylesheet", type: "text/css", href: datepickerStylesheetUrl },
     // NOTE: Architect deploys the public directory to /_static/
     { rel: "icon", href: "/_static/favicon.ico" },
   ];
