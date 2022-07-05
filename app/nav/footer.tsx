@@ -39,7 +39,7 @@ const Footer: FC<FooterProps> = ({ hide }) => {
   <>
       {
       hide ? null :
-      <footer className="w-full py-3 z-40 bg-zinc-300 text-base font-medium fixed bottom-0">
+      <footer className="w-full py-3 nav-bg z-40 text-base font-medium fixed bottom-0">
           <Notification message={ message } setMessage={ setMessage }/>
           <ul className="w-full flex align-center justify-around">
           {

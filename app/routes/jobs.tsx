@@ -46,7 +46,7 @@ const Jobs = () => {
         {
           jobs.map(job => {
             return (
-              <li className="my-10 p-5 rounded-md bg-zinc-200" key={`job-${job.id}` }>
+              <li className="my-10 p-5 list-item-bubble" key={`job-${job.id}` }>
                   <h4 className="py-1">
                     <Link className="font-medium text-lg" to={{
                       pathname: `/jobs/${job.id}`,

@@ -43,7 +43,7 @@ const Header:FC<HeaderProps> = ({ user, pathname }) => {
   }
 
   return (
-    <nav className="px-3 py-2 nav w-full bg-zinc-300 text-base sm:font-medium">
+    <nav className="px-3 py-2 nav nav-bg w-full text-base sm:font-medium">
       <Link to='/' className={`font-bold p-2 home-icon-highlight${onHomePage ? ' disabled': ''}`}>
         <i className="icon-home"></i> Home
       </Link>

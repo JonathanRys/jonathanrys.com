@@ -33,7 +33,8 @@ export const links: LinksFunction = () => {
     { rel: "stylesheet", type: "text/css", href: customStylesheetUrl },
     { rel: "stylesheet", type: "text/css", href: datepickerStylesheetUrl },
     // NOTE: Architect deploys the public directory to /_static/
-    { rel: "icon", href: "/_static/favicon.ico" },
+    { rel: "icon", type: "image/svg+xml", href: "/_static/favicon.svg" },
+    { rel: "icon", type: "image/png", href: "/_static/favicon.ico" },
   ];
 };
 

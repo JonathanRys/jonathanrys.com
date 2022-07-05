@@ -21,7 +21,7 @@ const Modal: FC<WrapperProps> = ({ children }) => {
   return (
     <Overlay>
       <div className="mx-auto w-11/12 sm:w-3/4 lg:w-1/2 py-16 sm:py-20 modal-dialog relative w-auto pointer-events-none">
-        <div className="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+        <div className="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white text-zinc-600 bg-clip-padding rounded-md outline-none">
           { children }
         </div>
       </div>

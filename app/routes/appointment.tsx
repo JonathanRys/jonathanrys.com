@@ -70,7 +70,7 @@ const Appointments = () => {
           user && appointments ? 
           appointments.map( (appointment: Appointment, index: number) => {
             return (
-              <li className="my-8 p-5 rounded-md bg-zinc-200" key={`job-${appointment.id}` }>
+              <li className="my-8 p-5 list-item-bubble" key={`job-${appointment.id}` }>
                 <div className="flex justify-between w-full">
                   <h4 className="py-1">
                     <Icon location={ appointment.location } />

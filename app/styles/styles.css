@@ -2,15 +2,33 @@
 
 /* Define color variables */
 :root {
+  --zinc-50: #fafafa;
+  --zinc-100: #f4f4f5;
+  --zinc-200: #e4e4e7;
+  --zinc-300: #d4d4d8;
+  --zinc-400: #a1a1aa;
+  --zinc-500: #71717a;
   --zinc-600: #52525b;
-  --purple-600: #9333ea;
+  --zinc-700: #3f3f46;
+  --zinc-800: #27272a;
+  --zinc-900: #18181b;
+  /* --purple-500: #a855f7; */
+  /* --purple-600: #9333ea; */
+  --purple-700: #7e22ce;
+  --sky-500: #0ea5e9;
+  /* --sky-600: #0284c7; */
   --sky-800: #075985;
-  --sky-600: #0284c7;
+  
+}
+
+/* Default SVG fill color for light-mode */
+path {
+  fill: var(--zinc-900);
 }
 
 .hyperlink {
   font-weight: 500;
-  color: var(--sky-600);
+  color: var(--sky-500);
 }
 
 .hyperlink:hover {
@@ -18,7 +36,11 @@
 }
 
 .hyperlink:visited {
-  color: var(--purple-600);
+  color: var(--purple-700);
+}
+
+.nav-bg {
+  background-color: var(--zinc-300);
 }
 
 .nav {
@@ -48,6 +70,7 @@
 
 .desktop-nav {
   justify-content: space-between;
+  text-align: center;
 }
 
 .menu-item:after {
@@ -95,10 +118,14 @@
 .disabled,
 .disabled .icon-home:before {
   pointer-events: none;
-  color: #aaa;
+  color: var(--zinc-400);
   text-shadow: 1px 1px white;
 }
 
+.list-item-bubble {
+  border-radius: 0.375rem;
+  background-color: var(--zinc-200);
+}
 /* Modal styles */
 
 .overlay {
@@ -117,6 +144,34 @@
 .icon-home:before {
   color: #000080;
 }
+
+
+/* Set default colors for dark theme */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--zinc-500);
+    color: var(--zinc-50);
+  }
+  path {
+    fill: var(--zinc-50);
+  }
+  .nav-bg {
+    background-color: var(--zinc-700);
+  }
+  .list-item-bubble {
+    background-color: var(--zinc-700);
+  }
+  .text-shadow:hover {
+    text-shadow: 1px 1px var(--zinc-900);
+    color: var(--zinc-50);
+  }
+  .disabled,
+  .disabled .icon-home:before {
+    color: var(--zinc-500);
+    text-shadow: 1px 1px var(--zinc-800);
+  }
+}
+
 
 /** IcoMoon generated font styles **/
 @font-face {
