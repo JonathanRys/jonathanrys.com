@@ -86,7 +86,7 @@ path {
 
 .notification {
   background-color: var(--sky-800);
-  color: white;
+  color: var(--zinc-50);
   position: fixed;
   top: 4rem;
   left: 0;
@@ -100,26 +100,20 @@ path {
 }
 
 .text-shadow:hover {
-  text-shadow: 1px 1px white;
+  text-shadow: 1px 1px var(--zinc-50);
   font-weight: 700;
-  color: black;
+  color: var(--zinc-900);
   /* padding: 0; */
 }
-
-.home-icon-highlight {
-  padding: 0 0.075rem;
-}
-.home-icon-highlight:hover {
-  text-shadow: 1px 1px white;
-  font-weight: 900;
-  padding: 0;
+.font-semibold.text-shadow:hover {
+  font-weight: 800;
 }
 
 .disabled,
 .disabled .icon-home:before {
   pointer-events: none;
   color: var(--zinc-400);
-  text-shadow: 1px 1px white;
+  text-shadow: 1px 1px var(--zinc-50);
 }
 
 .list-item-bubble {
@@ -142,7 +136,7 @@ path {
 }
 
 .icon-home:before {
-  color: #000080;
+  color: var(--sky-500);
 }
 
 
@@ -159,11 +153,11 @@ path {
     background-color: var(--zinc-700);
   }
   .list-item-bubble {
-    background-color: var(--zinc-700);
+    background-color: var(--zinc-600);
   }
   .text-shadow:hover {
     text-shadow: 1px 1px var(--zinc-900);
-    color: var(--zinc-50);
+    color: var(--zinc-100);
   }
   .disabled,
   .disabled .icon-home:before {

@@ -44,7 +44,7 @@ const Header:FC<HeaderProps> = ({ user, pathname }) => {
 
   return (
     <nav className="px-3 py-2 nav nav-bg w-full text-base sm:font-medium">
-      <Link to='/' className={`font-bold p-2 home-icon-highlight${onHomePage ? ' disabled': ''}`}>
+      <Link to='/' className={`font-semibold p-2${onHomePage ? ' disabled': ' text-shadow'}`}>
         <i className="icon-home"></i> Home
       </Link>
       <div 
