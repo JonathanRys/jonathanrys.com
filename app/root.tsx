@@ -34,7 +34,8 @@ export const links: LinksFunction = () => {
     { rel: "stylesheet", type: "text/css", href: datepickerStylesheetUrl },
     // NOTE: Architect deploys the public directory to /_static/
     { rel: "icon", type: "image/svg+xml", href: "/_static/favicon.svg" },
-    { rel: "icon", type: "image/png", href: "/_static/favicon.ico" },
+    { rel: "icon", id: "light-scheme-icon", type: "image/png", href: "/_static/favicon.ico" },
+    { rel: "icon", id: "dark-scheme-icon", type: "image/png", href: "/_static/favicon_dark.ico" },
   ];
 };
 
@@ -84,6 +85,8 @@ const Document: FC<PropsWithTitle> = ({ children, title = 'Jonathan Rys | Home' 
           <LiveReload port={8002} /> : null
         }
       </body>
+      { /* Script to swap favicon in dark mode */}
+      <script src="/_static/js/favicon_swapper.js"></script>
     </html>
   );
 };
