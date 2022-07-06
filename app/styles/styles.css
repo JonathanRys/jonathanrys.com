@@ -156,6 +156,12 @@
     color: var(--zinc-500);
     text-shadow: 1px 1px var(--zinc-800);
   }
+  .form {
+    color: var(--zinc-900);
+  }
+  .form label {
+    color: var(--zinc-50);
+  }
 }
 
 
