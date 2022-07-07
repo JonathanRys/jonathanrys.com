@@ -13,6 +13,8 @@ import { useOptionalUser } from "~/utils";
 export default function Index() {
   const user = useOptionalUser();
 
+  console.log("user:", user)
+
   return (
     <main className="relative sm:flex sm:items-center sm:justify-center">
       <div className="relative sm:pb-16 sm:pt-8">
@@ -55,7 +57,7 @@ export default function Index() {
             </div>
           </div>
         </div>
-
+        <h1>{user?.email}</h1>
         <div className="mx-auto max-w-7xl py-2 px-4 sm:px-6 lg:px-8">
           <div className="mt-6 flex flex-wrap justify-center gap-8">
             {[

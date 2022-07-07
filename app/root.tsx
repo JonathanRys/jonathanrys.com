@@ -3,7 +3,8 @@ import type {
   LoaderFunction,
   MetaFunction
 } from "@remix-run/node";
-import { FC, useEffect } from "react";
+import type { FC } from "react";
+import { useEffect } from "react";
 import type { WrapperProps } from '~/types/base';
 import { json } from "@remix-run/node";
 import {
