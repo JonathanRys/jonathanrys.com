@@ -1,14 +1,14 @@
-import type { ActionFunction } from "@remix-run/node";
+// import type { ActionFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
 
 // import { getSession } from "~/session.server";
 
 import { useOptionalUser } from "~/utils";
 
-export const action: ActionFunction = async ({ request }) => {
-  // const session = await getSession(request);
+// export const action: ActionFunction = async ({ request }) => {
+//   // const session = await getSession(request);
 
-};
+// };
 
 export default function Index() {
   const user = useOptionalUser();
@@ -24,7 +24,7 @@ export default function Index() {
                 src="/_static/cover_image.jpg"
                 alt={ "Boot spur from \"the HoJo\" near Tuckerman ravine" }
               />
-              <div className="absolute inset-0 bg-[color:rgba(156,156,156,0.5)] mix-blend-multiply" />
+              <div className="absolute inset-0 bg-[color:rgba(156,156,156,0.5)] mix-blend-multiply"></div>
             </div>
             <div className="lg:pb-18 relative px-4 pt-16 pb-8 sm:px-6 sm:pt-24 sm:pb-14 lg:px-8 lg:pt-32">
               <div className="mx-auto mt-10 max-w-sm sm:flex sm:max-w-none sm:justify-center">

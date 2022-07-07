@@ -3,7 +3,7 @@ import type {
   LoaderFunction,
   MetaFunction
 } from "@remix-run/node";
-import type { FC } from "react";
+import { FC, useEffect } from "react";
 import type { WrapperProps } from '~/types/base';
 import { json } from "@remix-run/node";
 import {
@@ -70,6 +70,26 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 // Document component 
 const Document: FC<PropsWithTitle> = ({ children, title = 'Jonathan Rys | Home' }) => {
+  useEffect(() => {
+    const matcher = window.matchMedia('(prefers-color-scheme: dark)');
+    const lightIcon = document.querySelector('link#light-scheme-icon');
+    const darkIcon = document.querySelector('link#dark-scheme-icon');
+  
+    if (!lightIcon || !darkIcon) return;
+  
+    const onUpdate = () => {
+      if (matcher.matches) {
+        lightIcon.remove();
+        document.head.append(darkIcon);
+      } else {
+        darkIcon.remove();
+        document.head.append(lightIcon);
+      }
+    }
+    matcher.addEventListener("change", onUpdate);
+    onUpdate();
+  });
+
   return (
     <html lang="en" className="h-full min-h-screen font-sans text-zinc-600">
       <head>
@@ -84,8 +104,6 @@ const Document: FC<PropsWithTitle> = ({ children, title = 'Jonathan Rys | Home' 
           <LiveReload port={8002} /> : null
         }
       </body>
-      { /* Script to swap favicon in dark mode */}
-      <script src="/_static/js/favicon_swapper.js"></script>
     </html>
   );
 };
