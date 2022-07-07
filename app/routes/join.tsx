@@ -96,7 +96,7 @@ export const ErrorBoundry: FC<State> = ({ error }) => {
 
 export default function Join() {
   const [searchParams] = useSearchParams();
-  const redirectTo = searchParams.get("redirectTo") ?? undefined;
+  const redirectTo = safeRedirect(searchParams.get("redirectTo"), "/");
   const actionData = useActionData() as ActionData;
   const emailRef = React.useRef<HTMLInputElement>(null);
   const passwordRef = React.useRef<HTMLInputElement>(null);
