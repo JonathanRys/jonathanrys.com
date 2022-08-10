@@ -23,6 +23,9 @@ appointment
   pk *String  # userId
   sk **String # appointmentId
 
+oauth_tokens
+  pk *String  # userId
+
 @aws
 region us-east-1
 profile default

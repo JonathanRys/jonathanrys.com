@@ -2,15 +2,18 @@ import arc from "@architect/functions";
 import cuid from "cuid";
 
 import type { User } from "./user.server";
+import { sendAppointmentEmail } from "~/util/google_tools";
 
 export type Appointment = {
-  id: ReturnType<typeof cuid>;
+  id?: ReturnType<typeof cuid>;
   userId: User["id"];
   title: string;
   description: string;
   location: string;
   startDate: string;
   endDate: string;
+  timeZone?: string;
+  gcal_event_id?: string; 
 };
 
 export type AppointmentItem = {
@@ -47,11 +50,19 @@ export async function getAppointmentListItems({
   userId,
 }: Pick<Appointment, "userId">): Promise<Array<Pick<Appointment, "id" | "title" | "location" | "startDate" | "endDate">>> {
   const db = await arc.tables();
+  
+  const admins = ['email#admin@jonathanrys.com', `email#${process.env.ADMIN_EMAIL}`];
 
-  const result = await db.appointment.query({
-    KeyConditionExpression: "pk = :pk",
-    ExpressionAttributeValues: { ":pk": userId },
-  });
+  let result = { Items: [] }
+
+  if (userId && admins.includes(userId)) {
+    result = await db.appointment.scan({TableName: 'appointment'});
+  } else {
+    result = await db.appointment.query({
+      KeyConditionExpression: "pk = :pk",
+      ExpressionAttributeValues: { ":pk": userId },
+    });
+  }
 
   return result.Items.map((n: any) => ({
     title: n.title,
@@ -82,6 +93,16 @@ export async function createAppointment({
     startDate: startDate,
     endDate: endDate
   });
+
+  // Add calendar event
+
+  // Send email confirmation
+  try {
+    sendAppointmentEmail(result);
+  } catch (err) {
+    console.log('Error sending event creation email:', err)
+  }
+
   return {
     id: skToId(result.sk),
     userId: result.pk,
@@ -118,6 +139,15 @@ export async function updateAppointment({
     db.appointment.delete({ pk: userId, sk: idToSk(id) });
   }
 
+  // Update calendar
+
+  // Send update email
+  try {
+    sendAppointmentEmail(result);
+  } catch (err) {
+    console.log('Error sending event update email:', err)
+  }
+
   return {
     id: id,
     userId: result.pk,
@@ -132,5 +162,16 @@ export async function updateAppointment({
 export async function deleteAppointment({ id, userId }: Pick<Appointment, "id" | "userId">) {
   const db = await arc.tables();
 
-  return db.appointment.delete({ pk: userId, sk: idToSk(id) });
+  const appointment = await db.appointment.delete({ pk: userId, sk: idToSk(id) });
+
+  // Delete calendar event
+
+  // Send deleted email
+  try {
+    sendAppointmentEmail(appointment);
+  } catch (err) {
+    console.log('Error sending event deleted email:', err)
+  }
+
+  return appointment
 }
