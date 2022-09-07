@@ -41,7 +41,7 @@ export const links: LinksFunction = () => {
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
-  viewport: "width=device-width,initial-scale=1",
+  viewport: "width=device-width,initial-scale=1"
 });
 
 // Type declarations
@@ -143,13 +143,13 @@ export const ErrorBoundry: FC<State> = ({ error }) => {
 
 // Create the app structure
 export default function App() {
-    return (
-      <Document>
-        <Layout>
-          <Outlet />
-        </Layout>
-        <ScrollRestoration />
-        <Scripts />
-      </Document>
-    );
+  return (
+    <Document>
+      <Layout>
+        <Outlet />
+      </Layout>
+      <ScrollRestoration />
+      <Scripts />
+    </Document>
+  );
 }

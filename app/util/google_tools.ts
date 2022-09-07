@@ -4,7 +4,7 @@ import type { Auth } from 'googleapis';
 import { google } from 'googleapis';
 import type { User } from '~/models/user.server'
 import type { OAuth } from '~/models/oauth.server';
-import type { Appointment } from '~/models/appointment.server';
+import type { Appointment, AppointmentItem } from '~/models/appointment.server';
 
 interface GCalDateTime {
   date?: Date;
@@ -24,8 +24,8 @@ export type CalendarEvent = {
 
 export type Email = {
   title: string,
-  description: string,
-  to: string
+  body: string,
+  to: User["email"]
 }
 
 const userIdToEmail = (sk: User["id"]): User["email"] => sk.replace(/^email#/, "");
@@ -54,7 +54,7 @@ export const generateOAuthUrl = (oauth2Client: Auth.OAuth2Client, redirectUrl?: 
 }
 
 export const verifyToken = async () => {
-  // @TODO: Add code
+  // @TODO: Add code if this is needed
 
 };
 
@@ -120,16 +120,14 @@ export const calendarEventToAppointment = (event: CalendarEvent): Appointment =>
   }
 }
 
-export const appointmentToEmail = (appointment: Appointment): Email => {
-  
-
+export const appointmentToEmail = (appointment: Appointment & AppointmentItem): Email => {
   const emailIntro = '<b>A new appointment has been created.</b>\n\n'
   const emailFooter = '\n\nBack to <a href="https://jonathanrys.com">jonathanrys.com</a>'
 
   return {
-    to: userIdToEmail(appointment.userId),
+    to: userIdToEmail(appointment.pk),
     title: appointment.title,
-    description: emailIntro + appointment.description + emailFooter
+    body: emailIntro + appointment.description + emailFooter
   }
 }
 
@@ -182,12 +180,6 @@ export const deleteMeeting = (options: {
   return options;
 }
 
-// GMail
-const gmail = google.gmail({
-  version: 'v1',
-  auth: process.env.GOOGLE_API_KEY
-});
-
 const makeBody = (email: Email) => {
   var str = ["Content-Type: text/plain; charset=\"UTF-8\"\n",
     "MIME-Version: 1.0\n",
@@ -196,11 +188,17 @@ const makeBody = (email: Email) => {
     "bcc: ", process.env.ADMIN_EMAIL, "\n",
     "from: ", process.env.ADMIN_EMAIL, "\n",
     "subject: ", email.title, "\n\n",
-    email.description
+    email.body
   ].join('');
 
   return Buffer.from(str).toString("base64").replace(/\+/g, '-').replace(/\//g, '_');
 }
+
+// GMail
+const gmail = google.gmail({
+  version: 'v1',
+  auth: process.env.GOOGLE_API_KEY
+});
 
 export const sendEmail = async (email: Email) => {
   const auth = new google.auth.GoogleAuth({
@@ -211,6 +209,7 @@ export const sendEmail = async (email: Email) => {
   
   // Acquire an auth client, and bind it to all future calls
   const authClient = await auth.getClient();
+  console.log('client:', authClient)
   google.options({auth: authClient});
 
   return gmail.users.messages.send({
@@ -224,6 +223,6 @@ export const sendEmail = async (email: Email) => {
   });
 }
 
-export const sendAppointmentEmail = (appointment: Appointment) => {
+export const sendAppointmentEmail = (appointment: Appointment & AppointmentItem) => {
   return sendEmail(appointmentToEmail(appointment))
 }
