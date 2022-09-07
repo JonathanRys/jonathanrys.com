@@ -64,13 +64,14 @@ export async function getAppointmentListItems({
     });
   }
 
-  return result.Items.map((n: any) => ({
-    title: n.title,
-    location: n.location,
-    startDate: n.startDate,
-    endDate: n.endDate,
-    description: n.description,
-    id: skToId(n.sk),
+  return result.Items.map((item: Appointment & AppointmentItem): Appointment => ({
+    userId: item.userId,
+    title: item.title,
+    location: item.location,
+    startDate: item.startDate,
+    endDate: item.endDate,
+    description: item.description,
+    id: skToId(item.sk),
   }));
 }
 
