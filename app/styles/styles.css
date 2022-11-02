@@ -38,6 +38,11 @@
   background-color: var(--zinc-300);
 }
 
+.mobile-nav-bg {
+  background-color: var(--zinc-200);
+  border-color: var(--zinc-400);
+}
+
 .nav {
   display: flex;
   align-items: center;
@@ -146,6 +151,10 @@
   }
   .nav-bg {
     background-color: var(--zinc-700);
+  }
+  .mobile-nav-bg {
+    background-color: var(--zinc-700);
+    border-color: var(--zinc-200);
   }
   .list-item-bubble {
     background-color: var(--zinc-600);
