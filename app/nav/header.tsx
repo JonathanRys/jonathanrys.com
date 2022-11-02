@@ -12,6 +12,7 @@ interface HeaderProps {
 }
 
 const Header:FC<HeaderProps> = ({ user, pathname }) => {
+  // Pull this to root so one can close the menu when clicking the body
   const [menuOpen, setMenuOpen] = useState(false);
   const onHomePage = pathname === '/';
 
@@ -37,32 +38,32 @@ const Header:FC<HeaderProps> = ({ user, pathname }) => {
     e.stopPropagation();
     setMenuOpen(false);
     // @ts-ignore-start
-    // I would create a custom type except I feel that form? belongs on MouseEvent.target
+    // I would create a custom type except I feel that form? belongs on MouseEvent.target and should be updated there
     e.target.form?.submit()
     // @ts-ignore end
   }
 
   return (
-    <nav className="px-3 py-2 nav nav-bg w-full text-base sm:font-medium">
-      <Link to='/' className={`font-semibold p-2${onHomePage ? ' disabled': ' text-shadow'}`}>
-        <i className="icon-home"></i> Home
+    <nav className="nav nav-bg w-full text-base sm:font-medium">
+      <Link to='/' className={`font-semibold${onHomePage ? ' disabled': ' text-shadow'}`}>
+        <i className="icon-home pl-2 sm:pl-4 pr-2"></i>Home
       </Link>
       <div 
-        className="relative overflow-visible right-0 flex icon-menu text-2xl sm:hidden" 
+        className="relative overflow-visible right-2 py-2 -m-1 flex icon-menu text-2xl sm:hidden"
         onClick={() => setMenuOpen(!menuOpen)}>
         { menuOpen &&
-          <ul onClick={ clickHandler } className="mobile-nav font-sans bg-zinc-200 border-zinc-400">
+          <ul onClick={ clickHandler } className="mobile-nav font-sans mobile-nav-bg">
             { menuItems.map( (item, index) => (
-              <Link key={`menu-item-${index}`} to={ item.to }>
-                <li className={`mx-4 my-3 hover:bg-zinc-300${pathname === item.to ? ' disabled' : ' text-shadow'}`}>
+              <li className={`px-4 py-5 hover:bg-zinc-300${pathname === item.to ? ' disabled' : ' text-shadow'}`}>
+                <Link key={`menu-item-${index}`} to={ item.to }>
                   <i className={ item.icon }></i> { item.title }
-                </li>
-              </Link>
+                </Link>
+              </li>
             )) }
             {
               user ?
               <Form action="/logout" method="post">
-                <button type="submit" title="Logout" className="mx-4 my-3 hover:bg-zinc-300 text-shadow">
+                <button type="submit" title="Logout" className="px-4 py-3 hover:bg-zinc-300 text-shadow">
                   <i className="icon-exit"></i> Logout
                 </button>
               </Form>: 
@@ -77,7 +78,7 @@ const Header:FC<HeaderProps> = ({ user, pathname }) => {
             key={`menu-item-${index}`}
             to={ item.to }
             title={ item.title }
-            className={`mx-4 my-3 menu-item${pathname === item.to ? ' disabled' : ' text-shadow'}`}>
+            className={`px-4 py-5 menu-item${pathname === item.to ? ' disabled' : ' text-shadow'}`}>
             { item.title }
           </Link>
         )) }
@@ -87,7 +88,7 @@ const Header:FC<HeaderProps> = ({ user, pathname }) => {
             <button
               type="submit"
               title="Logout"
-              className="mx-4 my-3 menu-item text-shadow">
+              className="px-4 py-5 menu-item text-shadow">
               Logout
             </button>
           </Form> :
