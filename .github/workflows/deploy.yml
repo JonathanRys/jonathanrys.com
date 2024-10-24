@@ -109,13 +109,13 @@ jobs:
       - name: 🏗 Build
         run: npm run build
 
-      # - name: 🌳 Cypress run
-      #   uses: cypress-io/github-action@v4
-      #   with:
-      #     start: npm run dev
-      #     wait-on: "http://localhost:3000"
-      #   env:
-      #     PORT: "3000"
+      - name: 🌳 Cypress run
+        uses: cypress-io/github-action@v4
+        with:
+          start: npm run dev
+          wait-on: "http://localhost:3000"
+        env:
+          PORT: "3000"
 
   deploy:
     needs: [lint, typecheck, vitest, cypress]
@@ -161,10 +161,10 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
-      - name: 🚀 Production Deploy
-        if: github.ref == 'refs/heads/main'
-        run: arc deploy --production --prune
-        env:
-          CI: true
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      # - name: 🚀 Production Deploy
+      #   if: github.ref == 'refs/heads/main'
+      #   run: arc deploy --production --prune
+      #   env:
+      #     CI: true
+      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
