@@ -138,6 +138,24 @@
   color: var(--sky-500);
 }
 
+.portfolio {
+  margin: auto;
+  padding: 0px 20px 10px;
+}
+
+@media screen and (min-width: 640px) {
+  .portfolio {
+    max-width: 90%;
+    padding: 20px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .portfolio {
+    max-width: 80%;
+    padding: 30px 20px 40px;
+  }
+}
+
 /* Set default colors for dark theme */
 @media (prefers-color-scheme: dark) {
   body {

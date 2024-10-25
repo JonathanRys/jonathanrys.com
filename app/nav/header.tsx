@@ -15,10 +15,15 @@ const Header: FC<HeaderProps> = ({ user, pathname }) => {
 
   const menuItems = [
     {
-      to: "/appointment",
-      icon: "icon-calendar",
-      title: "Appointments",
+      to: "/portfolio",
+      icon: "icon-folder",
+      title: "Portfolio",
     },
+    // {
+    //   to: "/appointment",
+    //   icon: "icon-calendar",
+    //   title: "Appointments",
+    // },
     {
       to: "/jobs",
       icon: "icon-briefcase",
@@ -51,7 +56,7 @@ const Header: FC<HeaderProps> = ({ user, pathname }) => {
         <i className="icon-home pl-2 pr-2 sm:pl-4"></i>Home
       </Link>
       <div
-        className="icon-menu relative right-2 -m-1 flex overflow-visible py-2 text-2xl sm:hidden"
+        className="icon-menu relative right-2 -m-1 flex overflow-visible py-2 text-xl sm:hidden"
         onClick={() => setMenuOpen(!menuOpen)}
       >
         {menuOpen && (

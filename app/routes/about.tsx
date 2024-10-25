@@ -11,12 +11,12 @@ const About = () => {
     {
       id: 1,
       title: "Interests",
-      text: `I enjoy science and mathematics of all kinds.  I've been vegan for ${9} years.`, // @todo: make this dynamic 10/15/15
+      text: `I enjoy studying science and mathematics of all kinds.  I've been vegan for ${9} years and vegetarian for ${20}.`, // @todo: make this dynamic 10/15/15
     },
     {
       id: 2,
       title: "Hobbies",
-      text: "Hiking, Cooking, Foraging, Mycology, Speed cubing",
+      text: "Hiking, Rock Climbing, Kayaking, Cooking, Foraging, Mycology, Speed cubing",
     },
   ];
 
