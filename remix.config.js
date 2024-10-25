@@ -1,5 +1,3 @@
-const path = require("path");
-
 /**
  * @type {import('@remix-run/dev').AppConfig}
  */
@@ -19,7 +17,7 @@ module.exports = {
       console.log("⚠️  Test routes enabled.");
       route(
         "__tests/create-user",
-        path.join(__dirname, "cypress/support/test-routes/create-user.ts")
+        "../cypress/support/test-routes/create-user.ts"
       );
     });
   },

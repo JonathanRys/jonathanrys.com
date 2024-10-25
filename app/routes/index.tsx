@@ -6,8 +6,7 @@ import { Link } from "@remix-run/react";
 import { useOptionalUser } from "~/utils";
 
 // export const action: ActionFunction = async ({ request }) => {
-  // const session = await getSession(request);
-// };
+// const session = await getSession(request);
 
 export default function Index() {
   const user = useOptionalUser();
@@ -21,7 +20,7 @@ export default function Index() {
               <img
                 className="h-full w-full object-cover"
                 src="/_static/cover_image.jpg"
-                alt={ "Boot spur from \"the HoJo\" near Tuckerman ravine" }
+                alt={'Boot spur from "the HoJo" near Tuckerman ravine'}
               />
               <div className="absolute inset-0 bg-[color:rgba(156,156,156,0.5)] mix-blend-multiply"></div>
             </div>
