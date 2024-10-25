@@ -151,7 +151,7 @@ jobs:
         run: npm run build
 
       - name: 🛠 Install Arc
-        run: npm i -g @architect/architect
+        run: npm i -g @architect/architect@10.16.3
 
       - name: 🚀 Staging Deploy
         if: github.ref == 'refs/heads/dev'
