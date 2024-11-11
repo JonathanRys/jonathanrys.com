@@ -31,10 +31,8 @@ const About = () => {
       <ul>
         {data.map((item) => (
           <li key={`about-${item.id}`} className="list-item-bubble my-10 p-5">
-            <div className="my-2">
-              <h3 className="font-bold">{item.title}</h3>
-              <p>{item.text}</p>
-            </div>
+            <h5 className="mb-2 text-base font-semibold">{item.title}</h5>
+            <p>{item.text}</p>
           </li>
         ))}
       </ul>

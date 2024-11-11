@@ -21,7 +21,7 @@ const portfolioData = [
   },
   {
     id: 3,
-    title: "jonathan.rys.com",
+    title: "jonathanrys.com",
     company: "Personal Project",
     text: "I built this site using ReMix.",
   },
