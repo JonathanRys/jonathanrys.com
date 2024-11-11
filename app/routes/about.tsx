@@ -11,17 +11,17 @@ const About = () => {
     {
       id: 1,
       title: "Interests",
-      text: `I enjoy studying science and mathematics of all kinds.  I've been vegan for ${9} years and vegetarian for ${20}.`, // @todo: make this dynamic 10/15/15
+      text: `I enjoy studying science and mathematics of all kinds.  I've been vegan for ${9} years and vegetarian for ${20}.  I love hiking and camping any time of year and have hiked all 48 of the 4000-footers in NH in all 4 seasons.`, // @todo: make this dynamic 10/15/15
     },
     {
       id: 2,
       title: "Hobbies",
-      text: "Hiking, Rock/Ice Climbing, Kayaking, Cooking, Foraging, Mycology, Speed cubing",
+      text: "Hiking, Rock/Ice Climbing, Kayaking, Cooking, Foraging, Mycology, Microscopy, Speed cubing",
     },
     {
       id: 3,
       title: "About Me",
-      text: "I've lived in the Boston area my whole life. I learned to use a computer so I could play video games at a very young age.  I remember using DOS 3.0 on a 16 GHz machine.  I learned BASIC in High school and I taught myself C and wrote a text-based video game with some animated graphics.  Then one summer I helped my father to rewrite some FORTRAN code and used the results to program EEPROM chips.  This got me excited about a career in computer science.",
+      text: "I've lived in the Boston area my whole life. I learned to use a computer so I could play video games at a very young age.  I remember using DOS 3.0 on a 16 GHz machine and booting from a floppy disk.  I learned BASIC in High school and I taught myself C and wrote an H.P. Lovecraft-inspired text-based video game with some animated graphics.  Then one summer I helped my father to rewrite some FORTRAN code and used the results to program EEPROM chips.  This got me excited about a career in computer science.",
     },
   ];
 
