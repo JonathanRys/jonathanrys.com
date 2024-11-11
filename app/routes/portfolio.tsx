@@ -83,8 +83,8 @@ const Portfolio = () => {
         <h3 className="text-lg">Here are some of the projects I'm proud of:</h3>
         {portfolioData.map((folio) => (
           <div key={`folio-${folio.id}`} className="list-item-bubble my-10 p-5">
-            <h5 className="mb-2 text-base font-semibold" title={folio.company}>
-              {folio.title}
+            <h5 className="mb-2 text-base font-semibold">
+              {folio.title} (<span className="text-sm">{folio.company}</span>)
             </h5>
             <p>{folio.text}</p>
           </div>
