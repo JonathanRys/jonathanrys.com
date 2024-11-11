@@ -11,7 +11,7 @@ const portfolioData = [
     id: 1,
     title: "HealthVision",
     company: "HDAI",
-    text: "Improved developer experience and worked on all aspects of the application available in hospitals throughout the country inside Epic. This app allows physicians and nurses to gain valuable insights into their patients' medical history using data science and AI tools.",
+    text: "Worked on all aspects of this application which is available in hospitals throughout the country inside Epic. This application allows physicians and nurses to gain valuable insights into their patients' medical history using data science and AI tools.",
   },
   {
     id: 2,
