@@ -17,7 +17,7 @@ const portfolioData = [
     id: 2,
     title: "PhysGPT",
     company: "Private Investor",
-    text: "This project ingested millions of vectors of data from over 5000 PDFs that were OCRed, split into chunks, embedded, and uploaded to Pinecone. The vectors were then queried and fed to Chat GPT to answer questions about physics for a group of mad scientists. This was built with FastAPI and React then provisioned on AWS using Terraform.",
+    text: "This project ingested millions of vectors of data from over 5000 PDFs (some 100,000 pages long) that were OCRed, split into chunks, embedded, and uploaded to Pinecone. When the user enters a query, the query is converted to a vector and sent to pinecone.  Pinecone then takes that vector, and using cosine similarity (ignoring magnitude and focusing on the angle between the vectors), it finds the top 10 most similar vectors and returns them to me, I then query MongoDB to get the actual text and book metadata and I query an LLM to get an AI-generated summary of the topic given the returned texts as context. This was built with FastAPI and React then provisioned on AWS using Terraform.  User management and account info is stored in DynamoDB, vectors are stored in Pinecone (I also tested this in Milvus), and the actual text and associated metadata is stored in MongoDB.",
   },
   {
     id: 3,
@@ -29,19 +29,19 @@ const portfolioData = [
     id: 4,
     title: "Queuing system",
     company: "BetterLesson",
-    text: "Took ownership of the queuing system and managed setting up a FIFO queue as well as dead-letter queues. This was built in AWS Lambda(Python) and SQS.",
+    text: "Took over ownership of the queuing system and the associated webhooks. I managed setting up and configuring a FIFO queue as well as dead-letter queues. This was built in AWS Lambda(Python) and SQS.",
   },
   {
     id: 5,
     title: "Coaching Platform",
     company: "BetterLesson",
-    text: "Worked on various features of our interactive coaching platform, from video integration with Zoom to user management consoles. This was Built on Flask and React.",
+    text: "Worked on various features of our interactive coaching platform, from video integration with Zoom to user management consoles. This application was built with Flask and React and pulled data from Zoom, Salesforce, CoachBase, and MySQL together to allow teachers and their coaches to lay out a learning plan, share milestones and feedback, and schedule and share clips from video meetings all within our platform.",
   },
   {
     id: 6,
     title: "Python 3 Upgrade",
     company: "BetterLesson",
-    text: "Led the upgrade of our servers in all environments from Python 2.7 to Python 3.6 and updated the encoding and collation of some columns in MySQL to utf8 from latin1.",
+    text: "Led the upgrade of our servers in all environments from Python 2.7 to Python 3.6 and updated the encoding and collation of character-based columns in MySQL to utf8 from latin1.",
   },
   {
     id: 7,
@@ -53,13 +53,13 @@ const portfolioData = [
     id: 8,
     title: "Mobile app to check product ingredients",
     company: "Personal Project",
-    text: "Designed and build a mobile app for Android using React Native.  This app allows the user to set dietary preferences within the app and then scan food products at the store.  The app takes the barcode and calls the OpenFoodFacts.org API to get a list of ingredients and other dietary information.  Then it makes a call to my Python API to classify the ingredients.  Then, based on the user's preferences, it would let them know if the product met their approval.",
+    text: "Designed and built a mobile app for Android using React Native.  This app allows the user to set dietary preferences within the app and then scan food products at the store.  The app takes the barcode and calls the OpenFoodFacts.org API to get a list of ingredients and other dietary information.  Then it makes a call to my Python API to classify the ingredients.  Then, based on the user's preferences, the UI would let them know if the product met their approval.",
   },
   {
     id: 9,
     title: "OnSite",
     company: "American Tower",
-    text: "This was an app to help technicians take inventory of the equipment on cell phone towers. The app needed to be available offline so they could upload the data when they returned to their homes. This app was built with jQuery, CSS, and HTML.  I was not initially the architect on this project, but I came to own the product.",
+    text: "This was an app to help technicians take inventory of the equipment on cell phone towers. The app needed to be available offline so they could upload the data when they returned to their homes so I made heavy use of localStorage and service workers. This app was built with jQuery, CSS, and HTML.  I was not initially the architect on this project, but I came to own the product.",
   },
   {
     id: 10,
