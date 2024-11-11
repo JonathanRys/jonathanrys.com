@@ -13,6 +13,7 @@ const Jobs = () => {
       id: 1,
       title: "Sr. Software Engineer",
       companyName: "Health Data Analytics Institute",
+      companyLogo: "/_static/logos/hdai_logo1.png",
       location: "Dedham, MA",
       startDate: "2023",
       endDate: "present",
@@ -23,6 +24,7 @@ const Jobs = () => {
       id: 2,
       title: "Lead Software Engineer",
       companyName: "Self-employed",
+      companyLogo: "",
       location: "Remote",
       startDate: "2023",
       endDate: "2023",
@@ -33,6 +35,7 @@ const Jobs = () => {
       id: 3,
       title: "Sr. Software Engineer",
       companyName: "BetterLesson",
+      companyLogo: "/_static/logos/BL-Logo-Inline.svg",
       location: "Cambridge, MA",
       startDate: "2018",
       endDate: "2021",
@@ -43,16 +46,18 @@ const Jobs = () => {
       id: 4,
       title: "Software Engineer",
       companyName: "American Tower",
+      companyLogo: "/_static/logos/atc_logo.png",
       location: "Woburn, MA",
       startDate: "2015",
       endDate: "2018",
       description:
-        "Built enterprise applications using HTML5, CSS3, JavaScript and ES6. While there I used node.js and Express.js to expose REST services which supply data from Oracle or MSSQL to the front-end as JSON.  Used React, npm, webpack, etc. to build single-page apps with authentication and authorization that consume data from REST services. Also used many packages from npm including socket.io, reactstrap, babel, axios and Sass.  Configured build automation using CircleCI, Travis CI and Jenkins. Built several responsive, dynamic widgets for the public web site including some using the Google Maps API.  Taught design patterns, lead code reviews and gave presentations on React, npm, webpack, Git, and Redux.  Used HOCs, currying and composition to refactor code to make it more modular and maintainable.",
+        "Built enterprise applications using HTML5, CSS3, JavaScript and ES6. While there I used node.js and Express.js to expose REST services which supply data from Oracle or MSSQL to the front-end as JSON.  Used React, npm, webpack, etc. to build single-page apps with authentication and authorization that consume data from REST services. Also used many packages from npm including socket.io, reactstrap, babel, axios and Sass.  Configured build automation using CircleCI, Travis CI and Jenkins. Built several responsive, dynamic widgets for the _static web site including some using the Google Maps API.  Taught design patterns, lead code reviews and gave presentations on React, npm, webpack, Git, and Redux.  Used HOCs, currying and composition to refactor code to make it more modular and maintainable.",
     },
     {
       id: 5,
       title: "Web Developer",
       companyName: "Pearson Inc.",
+      companyLogo: "/_static/logos/pearson_logo_white_bg.png",
       location: "Boston, MA",
       startDate: "2012",
       endDate: "2015",
@@ -63,7 +68,7 @@ const Jobs = () => {
 
   return (
     <>
-      <h1 className="text-xl">Work Experience</h1>
+      <h1 className="text-2xl">Work Experience</h1>
       <ul>
         {jobs.map((job) => {
           return (
@@ -76,9 +81,18 @@ const Jobs = () => {
                     search: "company",
                   }}
                 >
-                  {job.companyName}
+                  {job.companyName} - {job.location}
+                  {job.companyLogo && (
+                    <div className="float-right">
+                      <img
+                        height={40}
+                        width={120}
+                        src={job.companyLogo}
+                        alt="Company logo"
+                      />
+                    </div>
+                  )}
                 </Link>{" "}
-                - {job.location}
               </h4>
               <div>
                 <span className="font-bold">{job.title}</span> ({job.startDate}{" "}

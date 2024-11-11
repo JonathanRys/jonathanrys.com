@@ -116,6 +116,7 @@
 }
 
 .list-item-bubble {
+  border: 1px solid #333;
   border-radius: 0.375rem;
   background-color: var(--zinc-200);
 }

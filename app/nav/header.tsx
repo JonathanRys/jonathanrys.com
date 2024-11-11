@@ -24,6 +24,11 @@ const Header: FC<HeaderProps> = ({ user, pathname }) => {
     //   icon: "icon-calendar",
     //   title: "Appointments",
     // },
+    // {
+    //   to: "/blog",
+    //   icon: "icon-pencil",
+    //   title: "Blog",
+    // },
     {
       to: "/jobs",
       icon: "icon-briefcase",

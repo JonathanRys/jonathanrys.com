@@ -1,0 +1,9 @@
+{
+  "powermode.enabled": false,
+  "powermode.presets": "exploding-rift",
+  "powermode.combo.location": "off",
+  "powermode.combo.counterEnabled": "hide",
+  "powermode.explosions.duration": 800,
+  "powermode.explosions.maxExplosions": 3,
+  "powermode.combo.threshold": 10
+}

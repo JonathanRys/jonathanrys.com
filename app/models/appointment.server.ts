@@ -13,7 +13,7 @@ export type Appointment = {
   startDate: string;
   endDate: string;
   timeZone?: string;
-  gcal_event_id?: string; 
+  gcal_event_id?: string;
 };
 
 export type AppointmentItem = {
@@ -21,8 +21,10 @@ export type AppointmentItem = {
   sk: `appointment#${Appointment["id"]}`;
 };
 
-const skToId = (sk: AppointmentItem["sk"]): Appointment["id"] => sk.replace(/^appointment#/, "");
-const idToSk = (id: Appointment["id"]): AppointmentItem["sk"] => `appointment#${id}`;
+const skToId = (sk: AppointmentItem["sk"]): Appointment["id"] =>
+  sk.replace(/^appointment#/, "");
+const idToSk = (id: Appointment["id"]): AppointmentItem["sk"] =>
+  `appointment#${id}`;
 
 export async function getAppointment({
   id,
@@ -48,15 +50,22 @@ export async function getAppointment({
 
 export async function getAppointmentListItems({
   userId,
-}: Pick<Appointment, "userId">): Promise<Array<Pick<Appointment, "id" | "title" | "location" | "startDate" | "endDate">>> {
+}: Pick<Appointment, "userId">): Promise<
+  Array<
+    Pick<Appointment, "id" | "title" | "location" | "startDate" | "endDate">
+  >
+> {
   const db = await arc.tables();
-  
-  const admins = ['email#admin@jonathanrys.com', `email#${process.env.ADMIN_EMAIL}`];
 
-  let result = { Items: [] }
+  const admins = [
+    "email#admin@jonathanrys.com",
+    `email#${process.env.ADMIN_EMAIL}`,
+  ];
+
+  let result;
 
   if (userId && admins.includes(userId)) {
-    result = await db.appointment.scan({TableName: 'appointment'});
+    result = await db.appointment.scan({ TableName: "appointment" });
   } else {
     result = await db.appointment.query({
       KeyConditionExpression: "pk = :pk",
@@ -64,15 +73,17 @@ export async function getAppointmentListItems({
     });
   }
 
-  return result.Items.map((item: Appointment & AppointmentItem): Appointment => ({
-    userId: item.userId,
-    title: item.title,
-    location: item.location,
-    startDate: item.startDate,
-    endDate: item.endDate,
-    description: item.description,
-    id: skToId(item.sk),
-  }));
+  return result.Items.map(
+    (item: Appointment & AppointmentItem): Appointment => ({
+      userId: item.userId,
+      title: item.title,
+      location: item.location,
+      startDate: item.startDate,
+      endDate: item.endDate,
+      description: item.description,
+      id: skToId(item.sk),
+    })
+  );
 }
 
 export async function createAppointment({
@@ -81,8 +92,11 @@ export async function createAppointment({
   description,
   location,
   startDate,
-  endDate
-}: Pick<Appointment, "description" | "title" | "userId" | "location" | "startDate" | "endDate">): Promise<Appointment> {
+  endDate,
+}: Pick<
+  Appointment,
+  "description" | "title" | "userId" | "location" | "startDate" | "endDate"
+>): Promise<Appointment> {
   const db = await arc.tables();
 
   const result = await db.appointment.put({
@@ -92,7 +106,7 @@ export async function createAppointment({
     description: description,
     location: location,
     startDate: startDate,
-    endDate: endDate
+    endDate: endDate,
   });
 
   // Add calendar event
@@ -101,7 +115,7 @@ export async function createAppointment({
   try {
     sendAppointmentEmail(result);
   } catch (err) {
-    console.log('Error sending event creation email:', err)
+    console.log("Error sending event creation email:", err);
   }
 
   return {
@@ -122,8 +136,17 @@ export async function updateAppointment({
   description,
   location,
   startDate,
-  endDate
-}: Pick<Appointment, "description" | "title" | "userId" | "id" | "location" | "startDate" | "endDate">): Promise<Appointment> {
+  endDate,
+}: Pick<
+  Appointment,
+  | "description"
+  | "title"
+  | "userId"
+  | "id"
+  | "location"
+  | "startDate"
+  | "endDate"
+>): Promise<Appointment> {
   const db = await arc.tables();
 
   const result = await db.appointment.put({
@@ -133,7 +156,7 @@ export async function updateAppointment({
     description: description,
     location: location,
     startDate: startDate,
-    endDate: endDate
+    endDate: endDate,
   });
 
   if (result) {
@@ -146,7 +169,7 @@ export async function updateAppointment({
   try {
     sendAppointmentEmail(result);
   } catch (err) {
-    console.log('Error sending event update email:', err)
+    console.log("Error sending event update email:", err);
   }
 
   return {
@@ -160,10 +183,16 @@ export async function updateAppointment({
   };
 }
 
-export async function deleteAppointment({ id, userId }: Pick<Appointment, "id" | "userId">) {
+export async function deleteAppointment({
+  id,
+  userId,
+}: Pick<Appointment, "id" | "userId">) {
   const db = await arc.tables();
 
-  const appointment = await db.appointment.delete({ pk: userId, sk: idToSk(id) });
+  const appointment = (await db.appointment.delete({
+    pk: userId,
+    sk: idToSk(id),
+  })) as Appointment & AppointmentItem;
 
   // Delete calendar event
 
@@ -171,8 +200,8 @@ export async function deleteAppointment({ id, userId }: Pick<Appointment, "id" |
   try {
     sendAppointmentEmail(appointment);
   } catch (err) {
-    console.log('Error sending event deleted email:', err)
+    console.log("Error sending event deleted email:", err);
   }
 
-  return appointment
+  return appointment;
 }
