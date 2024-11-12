@@ -23,7 +23,7 @@ const portfolioData = [
     id: 3,
     title: "jonathanrys.com",
     company: "Personal Project",
-    text: "I built this site using ReMix.",
+    text: "I built this site using ReMix.  I chose ReMix because I was interested in proxy state management in React, read Kent C. Dodd's article on ReMix and became interested, and I wanted to learn DynamoDB.  Design guidelines say to choose 3 colors for your brand and stick with those, so I chose black, white and gray.  I'm not really much of a designer, but I can build complex, pixel-perfect UIs.",
   },
   {
     id: 4,
