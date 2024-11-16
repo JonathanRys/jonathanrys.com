@@ -9,6 +9,7 @@ module.exports = {
   serverBuildTarget: "arc",
   devServerPort: 8002,
   server: "./server.ts",
+  browserNodeBuiltinsPolyfill: { modules: { querystring: true } },
   ignoredRouteFiles: ["**/.*", "**/*.css", "**/*.test.{js,jsx,ts,tsx}"],
   routes(defineRoutes) {
     return defineRoutes((route) => {

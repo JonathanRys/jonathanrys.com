@@ -1,11 +1,11 @@
 import arc from "@architect/functions";
-import cuid from "cuid";
+import { createId } from "@paralleldrive/cuid2";
 
 import type { User } from "./user.server";
 import { sendAppointmentEmail } from "~/util/google_tools";
 
 export type Appointment = {
-  id?: ReturnType<typeof cuid>;
+  id?: ReturnType<typeof createId>;
   userId: User["id"];
   title: string;
   description: string;
@@ -62,28 +62,41 @@ export async function getAppointmentListItems({
     `email#${process.env.ADMIN_EMAIL}`,
   ];
 
+  let response;
   let result;
 
   if (userId && admins.includes(userId)) {
-    result = await db.appointment.scan({ TableName: "appointment" });
+    response = await db.appointment.scan({});
+    result = response.Items.map(
+      (item: Appointment & AppointmentItem): Appointment => ({
+        userId: item.userId,
+        title: item.title,
+        location: item.location,
+        startDate: item.startDate,
+        endDate: item.endDate,
+        description: item.description,
+        id: skToId(item.sk),
+      })
+    );
   } else {
-    result = await db.appointment.query({
+    response = await db.appointment.query({
       KeyConditionExpression: "pk = :pk",
       ExpressionAttributeValues: { ":pk": userId },
     });
+    result = response.Items.map(
+      (item: Appointment & AppointmentItem): Appointment => ({
+        userId: item.userId,
+        title: item.title,
+        location: item.location,
+        startDate: item.startDate,
+        endDate: item.endDate,
+        description: item.description,
+        id: skToId(item.sk),
+      })
+    );
   }
 
-  return result.Items.map(
-    (item: Appointment & AppointmentItem): Appointment => ({
-      userId: item.userId,
-      title: item.title,
-      location: item.location,
-      startDate: item.startDate,
-      endDate: item.endDate,
-      description: item.description,
-      id: skToId(item.sk),
-    })
-  );
+  return result;
 }
 
 export async function createAppointment({
@@ -101,7 +114,7 @@ export async function createAppointment({
 
   const result = await db.appointment.put({
     pk: userId,
-    sk: idToSk(cuid()),
+    sk: idToSk(createId()),
     title: title,
     description: description,
     location: location,

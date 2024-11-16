@@ -17,19 +17,19 @@ const portfolioData = [
     id: 2,
     title: "PhysGPT",
     company: "Private Investor",
-    text: "This project ingested millions of vectors of data from over 5000 PDFs (some 100,000 pages long) that were OCRed, split into chunks, embedded, and uploaded to Pinecone. When the user enters a query, the query is converted to a vector and sent to pinecone.  Pinecone then takes that vector, and using cosine similarity (ignoring magnitude and focusing on the angle between the vectors), it finds the top 10 most similar vectors and returns them to me, I then query MongoDB to get the actual text and book metadata and I query an LLM to get an AI-generated summary of the topic given the returned texts as context. This was built with FastAPI and React then provisioned on AWS using Terraform.  User management and account info is stored in DynamoDB, vectors are stored in Pinecone (I also tested this in Milvus), and the actual text and associated metadata is stored in MongoDB.",
+    text: "This project ingested millions of vectors of data from over 5000 PDFs (some 100,000 pages long) that were OCRed, split into chunks, embedded, and uploaded to Pinecone. When the user enters a query via the UI, the query is converted to a vector and sent to Pinecone.  Pinecone then takes that vector, finds the top 10 closest (most semantically similar) vectors, and returns them.  I then query MongoDB to get the actual text and book metadata and I query the LLM with the text and a prompt as context to get an AI-generated summary of the topic. This was built with FastAPI and React then Dockerized and pushed to ECR. The infrastructure was provisioned on AWS using Terraform.  User management and account info is stored in DynamoDB, vectors are stored in Pinecone (I also tested this with Milvus but Pinecone was better).",
   },
   {
     id: 3,
     title: "jonathanrys.com",
     company: "Personal Project",
-    text: "I built this site using ReMix.  I chose ReMix because I was interested in proxy state management in React, read Kent C. Dodd's article on ReMix and became interested, and I wanted to learn DynamoDB.  Design guidelines say to choose 3 colors for your brand and stick with those, so I chose black, white and gray.  I'm not really much of a designer, but I can build complex, pixel-perfect UIs.",
+    text: "I built this site using ReMix.  I chose ReMix for a few reasons: I was interested in proxy state management using MobX in React, I had read Kent C. Dodd's article on ReMix and wanted to try it out, and I wanted to learn DynamoDB.  ReMix comes with a basic home page design out of the box.  I liked it better than any previous idea I had and didn't want to re-invent the wheel, so I modified it and added some pages of my own.  Design guidelines say to choose 3 colors for your brand and stick with those; I chose black, white and gray ;).  I'm not really much of a designer, but I can quickly build complex, pixel-perfect UIs.",
   },
   {
     id: 4,
     title: "Queuing system",
     company: "BetterLesson",
-    text: "Took over ownership of the queuing system and the associated webhooks. I managed setting up and configuring a FIFO queue as well as dead-letter queues. This was built in AWS Lambda(Python) and SQS.",
+    text: "Took over ownership of the queuing system and the associated webhooks. I managed setting up and configuring a FIFO queue as well as dead-letter queues. This was built in AWS Lambda(Python) and SQS.  The queuing system handled webhook calls from Zoom and Salesforce and updated our app and data warehouse whenever a data source changed.  This project was fun because all of the functions had to be idempotent for this to work.",
   },
   {
     id: 5,
