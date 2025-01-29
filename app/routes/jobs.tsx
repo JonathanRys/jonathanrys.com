@@ -62,7 +62,7 @@ const Jobs = () => {
       startDate: "2012",
       endDate: "2015",
       description:
-        "Employed HTML5, XML, CSS3, JavaScript, jQuery, and Bootstrap to build and modify responsive web-pages in Backbone for both distributed content and internal use. Used object-oriented JavaScript in Google AppScripts with JSON objects and various APIs to automate Google sheets. Wrote UNIX shell-scripts to sort and manage files, and Perl scripts to parse documents and extract text.  Responsible for dynamically creating data used to link PDF, image, and video files to create various digital products containing 35,000+ files.",
+        "Employed HTML5, XML, CSS3, JavaScript, jQuery, and Bootstrap to build and modify responsive web-pages in Backbone for both distributed content and internal use. Used object-oriented JavaScript in Google AppScripts with JSON objects and various APIs to automate Google sheets. Wrote UNIX shell-scripts to sort and manage files, and Perl scripts to parse documents and extract text.  Responsible for dynamically creating data used to link PDF, image, and video files to create various digital products containing 35,000+ files. Used Documentum for content management.",
     },
   ];
 

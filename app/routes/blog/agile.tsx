@@ -8,7 +8,7 @@ const Agile = () => {
         That doesn't mean last minute changes are suddenly OK or that developers
         can be tossed around a bit more. Agile is a process improvement
         framework that uses tight feedback loops to inform all members of the
-        team of impending dangers or deficiencies within the team. Agile
+        team of impending dangers or deficiencies within the team quickly. Agile
         requires honesty, openness, and transparency by everyone involved
         (especially management) or it won't work.
       </p>
