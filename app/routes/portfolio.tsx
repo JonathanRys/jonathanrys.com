@@ -32,14 +32,14 @@ const portfolioData: Portfolio[] = [
           and it was only a medium-level problem (although I didn't see another
           solution posted that I liked better).
         </p>
-        <img src="Leetcode_matrix_queries.png" alt=""></img>
+        <img src="/_static/tech/Leetcode_matrix_queries.png" alt=""></img>
         <p>
           That night as I was trying to fall asleep, I realized that there were
           still some inefficiencies with my code. So the next day, I came back
           and cut that time in half (I guess, maybe? LeetCode runtimes are super
           random) but I also got in the 100% bucket for memory usage too:
         </p>
-        <img src="Leetcode_matrix_queries_2.png" alt=""></img>
+        <img src="/_static/tech/Leetcode_matrix_queries_2.png" alt=""></img>
         <p>
           <span className="bold">My Solution</span>: I realized that I didn't
           need to track every change to the matrix and that I was rewriting the
