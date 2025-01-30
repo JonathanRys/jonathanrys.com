@@ -28,35 +28,32 @@ const About = () => {
     {
       id: 2,
       title: "Hobbies",
-      text: "Hiking, Rock/Ice Climbing, Kayaking, Cooking, Foraging, Mycology, Microscopy, Physics, Speed cubing",
+      text: "Hiking, Rock/Ice Climbing, Kayaking, Cooking, Foraging, Microscopy, Physics, Speed cubing",
     },
-    {
-      id: 3,
-      title: "Who I am",
-      text: (
-        <>
-          <p>
-            I try to act in selfless ways and do what benefits the group over
-            trying to get things for myself. I work hard, have good work ethic,
-            and show up on time every day. I'm not particularly humble but it's
-            difficult when I work with people with a masters degree in computer
-            science who don't know how to design and build a scalable,
-            maintainable, well tested software system. I never liked doing
-            homework, but always got 100% on my tests. That being said, I know
-            there are people out there who know more than me. I'll never surpass
-            someone like Steven Wolfram in mathematics and that's OK. I learn
-            fast, I move fast, but I don't break things.
-          </p>
-          <p>
-            I don't reach out for endorsements or try to earn certifications or
-            generally spend a lot of time on things that don't build knowledge.
-            I took a Scrum Master certification course and had the whole study
-            guide memorized, but never bothered to take the open book exam
-            because I already knew I could ace it.
-          </p>
-        </>
-      ),
-    },
+    // {
+    //   id: 3,
+    //   title: "Who I am",
+    //   text: (
+    //     <>
+    //       <p>
+    //         I work hard, have good work ethic, I'm rarely sick, and show up on
+    //         time every day. I'm not particularly humble but it's difficult when
+    //         I've worked with people with a masters degree or PhD in computer
+    //         science who don't know how to design and build a scalable,
+    //         maintainable, well-tested software system. I never liked doing
+    //         homework, but always got 100% on my tests. I learn fast, I move
+    //         fast, and I don't break things.
+    //       </p>
+    //       <p>
+    //         I don't reach out for endorsements or try to earn certifications or
+    //         generally spend a lot of time on things that don't build knowledge.
+    //         I took a Scrum Master certification course and had the whole study
+    //         guide memorized, but never bothered to take the open book exam
+    //         because I already knew I could ace it.  I push myself to learn new things and
+    //       </p>
+    //     </>
+    //   ),
+    // },
     {
       id: 4,
       title: "Career history",
