@@ -327,9 +327,9 @@ const portfolioData: Portfolio[] = [
         <p>
           Along with the many personal projects and school assignments I worked
           on, I worked as a consultant for{" "}
-          <a href="https://www.wesslingarchitects.com/">
+          <Link to="https://www.wesslingarchitects.com/">
             Steven J. Wessling Architects
-          </a>{" "}
+          </Link>{" "}
           doing mostly networking and systems work. I also did various database,
           data science and web development work for various other companies
           including: <Link to="https://lifecyclepro.com">Lifecycle</Link>,
