@@ -32,14 +32,20 @@ const portfolioData: Portfolio[] = [
           and it was only a medium-level problem (although I didn't see another
           solution posted that I liked better).
         </p>
-        <img src="/_static/tech/Leetcode_matrix_queries.png" alt=""></img>
+        <img
+          src="/_static/tech/Leetcode_matrix_queries.png"
+          alt="2718. Sum of matrix after queries - 152ms 78.31MB"
+        ></img>
         <p>
           That night as I was trying to fall asleep, I realized that there were
           still some inefficiencies with my code. So the next day, I came back
           and cut that time in half (I guess, maybe? LeetCode runtimes are super
           random) but I also got in the 100% bucket for memory usage too:
         </p>
-        <img src="/_static/tech/Leetcode_matrix_queries_2.png" alt=""></img>
+        <img
+          src="/_static/tech/Leetcode_matrix_queries_2.png"
+          alt="76ms 73.64MB"
+        ></img>
         <p>
           <span className="bold">My Solution</span>: I realized that I didn't
           need to track every change to the matrix and that I was rewriting the
@@ -217,7 +223,10 @@ const portfolioData: Portfolio[] = [
         syntax, fixed circular imports, and removed old code. Python 2.7 had
         become unusable for us as pip stopped supporting Python 2.7. The details
         of that endeavor are captured{" "}
-        <Link to="https://stackoverflow.com/questions/68382662/how-to-install-pip-on-python-2-7-in-2021/">
+        <Link
+          className="hyperlink"
+          to="https://stackoverflow.com/questions/68382662/how-to-install-pip-on-python-2-7-in-2021/"
+        >
           in this Stack Overflow post
         </Link>
         .
@@ -327,14 +336,17 @@ const portfolioData: Portfolio[] = [
         <p>
           Along with the many personal projects and school assignments I worked
           on, I worked as a consultant for{" "}
-          <Link to="https://www.wesslingarchitects.com/">
+          <Link className="hyperlink" to="https://www.wesslingarchitects.com/">
             Steven J. Wessling Architects
           </Link>{" "}
           doing mostly networking and systems work. I also did various database,
           data science and web development work for various other companies
-          including: <Link to="https://lifecyclepro.com">Lifecycle</Link>,
-          Cambridge Lights, and{" "}
-          <Link to="https://www.intelligentlabor.com/">
+          including:{" "}
+          <Link className="hyperlink" to="https://lifecyclepro.com">
+            Lifecycle
+          </Link>
+          , Cambridge Lights, and{" "}
+          <Link className="hyperlink" to="https://www.intelligentlabor.com/">
             Intelligent Labor and Moving
           </Link>
           .

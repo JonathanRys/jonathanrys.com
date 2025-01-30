@@ -117,9 +117,15 @@ const About = () => {
           <p>
             I started building web apps of my own using Angular 1.3, but then
             everything about Angular changed, so I learned React instead. Please
-            visit my <Link to="/portfolio">portfolio</Link> and{" "}
-            <Link to="/jobs">job history</Link> for more details and the rest of
-            my story.
+            visit my{" "}
+            <Link className="hyperlink" to="/portfolio">
+              portfolio
+            </Link>{" "}
+            and{" "}
+            <Link className="hyperlink" to="/jobs">
+              job history
+            </Link>{" "}
+            for more details and the rest of my story.
           </p>
         </>
       ),
