@@ -25,7 +25,7 @@ const portfolioData: Portfolio[] = [
       <>
         <p>
           I decided to try to level up some of my coding skills by practicing on
-          LeetCode and I surprised myself by getting "Beats 100%"" for speed on
+          LeetCode and I surprised myself by getting "Beats 100%" for speed on
           an easy, but popular, question. So I tried something a bit harder and
           found a medium-level question where I did the same. But LeetCode
           scores in buckets and so maybe those scores weren't that impressive
@@ -37,7 +37,7 @@ const portfolioData: Portfolio[] = [
           alt="2718. Sum of matrix after queries - 152ms 78.31MB"
         ></img>
         <p>
-          That night as I was trying to fall asleep, I realized that there were
+          That night, as I was trying to fall asleep, I realized that there were
           still some inefficiencies with my code. So the next day, I came back
           and cut that time in half (I guess, maybe? LeetCode runtimes are super
           random) but I also got in the 100% bucket for memory usage too:
@@ -203,10 +203,10 @@ const portfolioData: Portfolio[] = [
           I worked on various features of our interactive coaching platform,
           from video integration with Zoom to user management consoles. This
           application was built with Flask and React and pulled data from Zoom,
-          Salesforce, CoachBase, and MySQL together to allow teachers and their
-          coaches to lay out a learning plan, share milestones and feedback,
-          schedule recurring meetings and event series, and share video clips
-          from meetings all within our platform.
+          Salesforce, CoachBase(our data warehouse), and MySQL together to allow
+          teachers and their coaches to lay out a learning plan, share
+          milestones and feedback, schedule recurring meetings and event series,
+          and share video clips from meetings all within our platform.
         </p>
       </>
     ),
@@ -370,7 +370,7 @@ const portfolioData: Portfolio[] = [
         getting the code working in the flowcharting software, we were able to
         run simulations and adjust the inputs to find the optimal solution. We
         then took that solution and used it to program EEPROM chips for use in
-        the refinery's control systems.
+        the refinery's control systems saving them more than $1M per year.
       </p>
     ),
   },
