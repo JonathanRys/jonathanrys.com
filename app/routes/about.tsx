@@ -56,7 +56,7 @@ const About = () => {
     // },
     {
       id: 4,
-      title: "Career history",
+      title: "Background",
       text: (
         <>
           <p>
