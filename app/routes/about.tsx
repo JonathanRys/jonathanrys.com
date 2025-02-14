@@ -76,8 +76,7 @@ const About = () => {
             the results to program EEPROM chips for refineries. I took a
             VisualBASIC course at Northeastern University and got a 4.0. My
             father also showed me how to work with data in Excel and MSAccess
-            and I had to take a course on it in college, but I don't remember
-            learning anything from that course.
+            and I had to take a course on it in college.
           </p>
           <p>
             I started going to college for computer science but got a job doing
@@ -88,20 +87,14 @@ const About = () => {
             companies while studying. Major universities were making their
             course syllabi available online and so I bought the books and
             followed the syllabi as a guide as to what I should learn and
-            studied those subjects more deeply than many of the students going
-            to those classes. After watching some lectures, I don't think a lot
-            of the teachers even understood what those books were saying in the
-            first place.
+            studied those subjects.
           </p>
           <p>
-            Then I crashed my car, got stranded, and came home the next day to
-            my house burned down. I didn't own a cell phone at this point so it
-            was a difficult time. Then the dot-com bubble burst and there really
-            wasn't really a lot of work for someone without a foot in the door
-            and no degree or certification. So I worked doing carpentry and
-            electrical work on the new house. I continued doing this for long
-            enough to learn how to fix a house on my own. Then I helped a friend
-            start a couple of companies before getting married.
+            Then the dot-com bubble burst and there really wasn't really a lot
+            of work for someone without a foot in the door and no degree or
+            certification. So I worked doing carpentry and electrical work on
+            the new house so I could learn how to fix a house on my own. Then I
+            helped a friend start a couple of companies before getting married.
           </p>
           <p>
             After getting married, I started going back to school. But then, my
