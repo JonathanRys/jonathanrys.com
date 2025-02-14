@@ -17,45 +17,45 @@ type Portfolio = {
 };
 
 const portfolioData: Portfolio[] = [
-  {
-    id: 21,
-    title: "LeetCode",
-    company: "",
-    text: (
-      <>
-        <p>
-          I decided to try to level up some of my coding skills by practicing on
-          LeetCode and I surprised myself by getting "Beats 100%" for speed on
-          an easy, but popular, question. So I tried something a bit harder and
-          found a medium-level question where I did the same. But LeetCode
-          scores in buckets and so maybe those scores weren't that impressive
-          and it was only a medium-level problem (although I didn't see another
-          solution posted that I liked better).
-        </p>
-        <img
-          src="/_static/tech/Leetcode_matrix_queries.png"
-          alt="2718. Sum of matrix after queries - 152ms 78.31MB"
-        ></img>
-        <p>
-          That night, as I was trying to fall asleep, I realized that there were
-          still some inefficiencies with my code. So the next day, I came back
-          and cut that time in half (I guess, maybe? LeetCode runtimes are super
-          random) but I also got in the 100% bucket for memory usage too:
-        </p>
-        <img
-          src="/_static/tech/Leetcode_matrix_queries_2.png"
-          alt="76ms 73.64MB"
-        ></img>
-        <p>
-          <span className="bold">My Solution</span>: I realized that I didn't
-          need to track every change to the matrix and that I was rewriting the
-          same elements over and over. So if I ran the data backwards, I
-          wouldn't need to overwrite any elements that already contained a
-          value.
-        </p>
-      </>
-    ),
-  },
+  // {
+  //   id: 21,
+  //   title: "LeetCode",
+  //   company: "",
+  //   text: (
+  //     <>
+  //       <p>
+  //         I decided to try to level up some of my coding skills by practicing on
+  //         LeetCode and I surprised myself by getting "Beats 100%" for speed on
+  //         an easy, but popular, question. So I tried something a bit harder and
+  //         found a medium-level question where I did the same. But LeetCode
+  //         scores in buckets and so maybe those scores weren't that impressive
+  //         and it was only a medium-level problem (although I didn't see another
+  //         solution posted that I liked better).
+  //       </p>
+  //       <img
+  //         src="/_static/tech/Leetcode_matrix_queries.png"
+  //         alt="2718. Sum of matrix after queries - 152ms 78.31MB"
+  //       ></img>
+  //       <p>
+  //         That night, as I was trying to fall asleep, I realized that there were
+  //         still some inefficiencies with my code. So the next day, I came back
+  //         and cut that time in half (I guess, maybe? LeetCode runtimes are
+  //         pretty random) but I also got in the 100% bucket for memory usage too:
+  //       </p>
+  //       <img
+  //         src="/_static/tech/Leetcode_matrix_queries_2.png"
+  //         alt="76ms 73.64MB"
+  //       ></img>
+  //       <p>
+  //         <span className="bold">My Solution</span>: I realized that I didn't
+  //         need to track every change to the matrix and that I was rewriting the
+  //         same elements over and over. So if I ran the data backwards, I
+  //         wouldn't need to overwrite any elements that already contained a
+  //         value.
+  //       </p>
+  //     </>
+  //   ),
+  // },
   {
     id: 20,
     title: "HealthVision",
@@ -67,20 +67,10 @@ const portfolioData: Portfolio[] = [
           hospitals throughout the country (inside Epic). This application
           allows physicians and nurses to gain valuable insights into their
           patients' medical history using data science and AI tools. This app
-          queries tables with hundreds of million to billions of rows, so we
-          built an advanced filter selector to allow users to find the data
-          they're looking for easily. I created the tables to save the column
-          and filter selections in and connected much of that functionality from
-          the front end to the database and back. I also built much of the UI
-          for the custom saved view selector.
+          queries tables with hundreds of million to billions of rows.
         </p>
         <p>
-          Before that, I worked on linking three tables of nested data to
-          display HCC gap information to help ACOs stay on top of their
-          reporting. These pages had breadcrumbs and saved filter nad scroll
-          state between navigation and complex table functionality using React
-          Suite and Ant-D. Added patient scorecards including Google Maps
-          integration, star ratings, and various data widgets.
+          Dealt with HIPAA compliance rules and 
         </p>
       </>
     ),
