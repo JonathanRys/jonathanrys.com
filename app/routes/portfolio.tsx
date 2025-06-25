@@ -66,11 +66,21 @@ const portfolioData: Portfolio[] = [
           I worked on all aspects of this application which is available in
           hospitals throughout the country (inside Epic). This application
           allows physicians and nurses to gain valuable insights into their
-          patients' medical history using data science and AI tools. This app
-          queries tables with hundreds of million to billions of rows.
+          patients' medical history using data science and AI tools. We ingest
+          healthcare data from BCDA, FHIR, and HL7 messages, parse that data and
+          align records across patients to create patient profile data that we
+          store in MongoDB. The frontend application calls our APIs written in
+          NestJS and our backend is allowed via AWS to communicate with MongoDB
+          Atlas and send the result to the frontend for presentation.
         </p>
         <p>
-          Dealt with HIPAA compliance rules and 
+          This application allows users to sort and filter patient or encounter
+          data based on various criteria and has some search capabilities as
+          well. There is a portal to use an AI assistant to search patient notes
+          and extract useful information about the patient easily. And export
+          functionality that allows users to export data as a CSV. The AI team
+          has various models that give predictions about these patients so users
+          can sort by the prediction results by various statistical methods.
         </p>
       </>
     ),
@@ -83,10 +93,10 @@ const portfolioData: Portfolio[] = [
       <>
         <p>
           This project ingested millions of vectors of data from over 5000 PDFs
-          (some 100,000 pages long) that were OCRed, split into one paragraph
-          chunks, embedded, and uploaded to Pinecone. When the user enters a
-          query via the UI, the query is converted to a vector and sent to
-          Pinecone (I also tested this with Milvus but Pinecone was more
+          (some 100,000 pages long) that were OCRed using Tessaract, split into
+          one paragraph chunks, embedded, and uploaded to Pinecone. When the
+          user enters a query via the UI, the query is converted to a vector and
+          sent to Pinecone (I also tested this with Milvus but Pinecone was more
           performant and easier than managing my own server). Pinecone then
           takes that vector, finds the top 10 closest (most semantically
           similar) vectors, and returns them. I query MongoDB to get the actual

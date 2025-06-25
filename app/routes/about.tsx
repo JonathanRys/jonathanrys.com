@@ -90,13 +90,6 @@ const About = () => {
             studied those subjects.
           </p>
           <p>
-            Then the dot-com bubble burst and there really wasn't really a lot
-            of work for someone without a foot in the door and no degree or
-            certification. So I worked doing carpentry and electrical work on
-            the new house so I could learn how to fix a house on my own. Then I
-            helped a friend start a couple of companies before getting married.
-          </p>
-          <p>
             After getting married, I started going back to school. But then, my
             wife lost her job and I had to find work. That's when I found a job
             as a contractor at Pearson where I used VBA to automate their
