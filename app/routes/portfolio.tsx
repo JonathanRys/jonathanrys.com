@@ -18,7 +18,7 @@ type Portfolio = {
 
 const portfolioData: Portfolio[] = [
   // {
-  //   id: 21,
+  //   id: 22,
   //   title: "LeetCode",
   //   company: "",
   //   text: (
@@ -56,6 +56,28 @@ const portfolioData: Portfolio[] = [
   //     </>
   //   ),
   // },
+  {
+    id: 21,
+    title: "Braintrust Prompt Optimization",
+    company: "Vendr",
+    text: (
+      <>
+        <p>
+          I worked with Braintrust to log model runs and optimize prompts. I
+          established remote evals accessing internal APIs for testing prompts,
+          improving measurement of prompt enhancements. I wrote LLM-as-a-judge
+          and code-based scorers to make sure the prompts were performing
+          properly. I set up CI/CD gate to ensure updated prompts couldn't be
+          deployed to production without passing all scorers. I developed static
+          datasets for prompt evaluation in CI/CD, streamlining testing
+          processes. I configured the prompt evaluation flow for ax-llm (DSPy
+          for TypeScript). I designed bidirectional sync CLI for interfacing
+          with Braintrust synchronizing prompts, scorers, datasets, and tools at
+          the project level.
+        </p>
+      </>
+    ),
+  },
   {
     id: 20,
     title: "HealthVision",
