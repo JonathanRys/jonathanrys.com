@@ -1,5 +1,4 @@
 import type { MetaFunction } from "@remix-run/node";
-import { Link, Outlet } from "@remix-run/react";
 
 export const meta: MetaFunction = () => {
   return {
@@ -85,13 +84,7 @@ const Jobs = () => {
           return (
             <li className="list-item-bubble my-10 p-5" key={`job-${job.id}`}>
               <h4 className="py-1">
-                <Link
-                  className="text-lg font-medium"
-                  to={{
-                    pathname: `/jobs/${job.id}`,
-                    search: "company",
-                  }}
-                >
+                <div>
                   {job.companyName} - {job.location}
                   {job.companyLogo && (
                     <div className="float-right">
@@ -99,11 +92,11 @@ const Jobs = () => {
                         height={40}
                         width={120}
                         src={job.companyLogo}
-                        alt="Company logo"
+                        alt={`${job.companyName}} company logo`}
                       />
                     </div>
                   )}
-                </Link>{" "}
+                </div>{" "}
               </h4>
               <div>
                 <span className="font-bold">{job.title}</span> ({job.startDate}{" "}
@@ -113,7 +106,6 @@ const Jobs = () => {
           );
         })}
       </ul>
-      <Outlet />
     </>
   );
 };
