@@ -10,18 +10,29 @@ export const meta: MetaFunction = () => {
 const Jobs = () => {
   const jobs = [
     {
-      id: 1,
+      id: 5,
+      title: "Sr. Software Engineer II",
+      companyName: "Vendr",
+      companyLogo: "/_static/logos/vendr.svg",
+      location: "Boston, MA",
+      startDate: "2025",
+      endDate: "2026",
+      description:
+        "Worked with Braintrust to log model runs and optimize prompts.  Established remote evals accessing internal APIs for testing prompts, improving measurement of prompt enhancements.  Set up a central repo for publishing AI packages to be consumed by other parts of the system.  Wrote LLM-as-a-judge and code-based scorers to make sure the prompts were performing properly.  Set up CI/CD gate to ensure updated prompts couldn't be deployed to production without passing all scorers.  Developed static datasets for prompt evaluation in CI/CD, streamlining testing processes.  Configured the prompt evaluation flow for ax-llm (DSPy for TypeScript).  Designed bidirectional sync CLI for interfacing with Braintrust synchronizing prompts, scorers, datasets, and tools at the project level.  Upgraded Zod 3 to Zod 4 across the stack",
+    },
+    {
+      id: 4,
       title: "Sr. Software Engineer",
       companyName: "Health Data Analytics Institute",
       companyLogo: "/_static/logos/hdai_logo1.png",
       location: "Dedham, MA",
       startDate: "2023",
-      endDate: "present",
+      endDate: "2025",
       description:
         "Worked with NestJS, React, React Query, and TypeScript to build APIs and application features.  Helped with the configuration and rollout of a new testing initiative using Playwright.  Migrated the frontend unit testing framework from Jest to Vitest.  Created database diagrams for the frontend teams.  Wrote documentation, participated in story design, helped design new DB tables.  Performed code reviews, mentored junior developers, helped define coding standards, etc.  Led the upgrade of Node, React, Typescript, ESlint, and numerous other libraries.  Configured Vite/Rollup, ESLint, Typescript, and node.  Aligned the configuration systems between the front and back end.  Significantly reduced time spent starting the app locally and switching environments.  Moved the backend app to a containerized deployment with Docker to be deployed to ECS.  Set up GitHub actions to build and deploy both the backend(ECR) and the frontend(S3) of the app.",
     },
     {
-      id: 2,
+      id: 3,
       title: "Lead Software Engineer",
       companyName: "Self-employed",
       companyLogo: "",
@@ -32,7 +43,7 @@ const Jobs = () => {
         "Ingested data from a collection of several thousand PDFs producing millions of vectors.  Split the data into chunks based on token count because the token limit restriction prevented effective texttiling.  I’m looking into building a hybrid solution.  Applied NLP techniques using nltk.  Created vector embeddings from the text chunks and saved them in Pinecone/Milvus.  Built a RAG-based GPT chatbot using the data in the vector DB for semantic search, then provided that result as context to the generative language model to create a summary about the topic.  Developed and deployed the architecture around these systems to AWS using terraform.  Created mockups in Balsamiq and used Trello for project management.",
     },
     {
-      id: 3,
+      id: 2,
       title: "Sr. Software Engineer",
       companyName: "BetterLesson",
       companyLogo: "/_static/logos/BL-Logo-Inline.svg",
@@ -43,7 +54,7 @@ const Jobs = () => {
         "Used Git and Jira, daily for project management. Used Python and Flask in tandem with SQLAlchemy to bring data to the front-end.  Used ElasticSearch, Alembic/MySQL, PostgreSQL, Quickbase, and Salesforce to store and retrieve data. Used JavaScript and React to build Front-end UIs.  Lead the adoption of automated testing using Jest, Enzyme and RTL. Implemented code-quality standards using ES-lint and Pylint in our CI/CD pipeline. Configured webpack. Used serverless to test AWS lambdas locally.  Set up systems involving webhooks, AWS lambdas, S3 and supervisor processes to poll SQS to collect messages added by the lambda. Used packer to build a new Docker container for our local environments to facilitate a Python3 upgrade.  Built and deployed new Linux servers using packer and Terraform. Used the AWS Console to manage our systems.  Configured NginX for local routing and proxying.  Set up and polled standard, FIFO, and dead-letter queues in SQS.",
     },
     {
-      id: 4,
+      id: 1,
       title: "Software Engineer",
       companyName: "American Tower",
       companyLogo: "/_static/logos/atc_logo.png",
@@ -54,7 +65,7 @@ const Jobs = () => {
         "Built enterprise applications using HTML5, CSS3, JavaScript and ES6. While there I used node.js and Express.js to expose REST services which supply data from Oracle or MSSQL to the front-end as JSON.  Used React, npm, webpack, etc. to build single-page apps with authentication and authorization that consume data from REST services. Also used many packages from npm including socket.io, reactstrap, babel, axios and Sass.  Configured build automation using CircleCI, Travis CI and Jenkins. Built several responsive, dynamic widgets for the _static web site including some using the Google Maps API.  Taught design patterns, lead code reviews and gave presentations on React, npm, webpack, Git, and Redux.  Used HOCs, currying and composition to refactor code to make it more modular and maintainable.",
     },
     {
-      id: 5,
+      id: 0,
       title: "Web Developer",
       companyName: "Pearson Inc.",
       companyLogo: "/_static/logos/pearson_logo_white_bg.png",
