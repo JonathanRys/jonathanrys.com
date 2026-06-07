@@ -12,7 +12,7 @@ const Jobs = () => {
       id: 5,
       title: "Sr. Software Engineer II",
       companyName: "Vendr",
-      companyLogo: "/_static/logos/vendr.svg",
+      companyLogo: "/_static/logos/vendr-logo-with-purple-text.svg",
       location: "Boston, MA",
       startDate: "2025",
       endDate: "2026",
